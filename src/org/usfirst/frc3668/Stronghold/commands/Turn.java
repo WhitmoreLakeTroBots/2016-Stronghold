@@ -51,8 +51,8 @@ public class Turn extends Command {
     protected void execute() {
     	double currentHeading = Robot.chassis.getGyroAngle();
     	double headingDelta = Math.abs(_DesiredHeading - currentHeading);
-    	if(headingDelta > Settings.turnDeadband)
-    	if (Robot.chassis.getEncoderValue() < _DesiredHeading){
+    	if(headingDelta > Settings.turnDeadband){
+    	if (Robot.chassis.getGyroAngle() < _DesiredHeading){
     		
     		Robot.chassis.drive(.75, 1.0);
     		_isFinished = false;
@@ -62,6 +62,7 @@ public class Turn extends Command {
     		Robot.chassis.drive(0.0, 0.0);
     		_isFinished = true;
     	}
+    }
     
     }
 
