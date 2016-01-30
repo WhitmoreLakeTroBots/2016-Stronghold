@@ -44,7 +44,7 @@ public class CMDturn extends Command {
     protected void initialize() {
     	Robot.chassis.resetEncoder();
     	_isFinished = false;
-    	System.out.println("stuff = turning right :)");
+    	System.out.println("CMDturn");
     }
 
     // Called repeatedly when this Command is scheduled to run

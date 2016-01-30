@@ -54,7 +54,7 @@ public class Chassis extends Subsystem {
     
     public double getGyroAngle(){
     	double gyroAngle = gyro.getAngle();
-    	System.out.println(gyroAngle);
+    	//System.out.println("Gyro Angle " + gyroAngle);
 		return gyro.getAngle();
     }
    

@@ -53,7 +53,7 @@ public class BoulderRoller extends Subsystem {
     }
     
     public void rollerRun(Relay.Value runState){
-    	Relay.Value runStateTrue;
+
     	// These If statements invert the value we pass to the relay... Why? so the buttons line up with the direction we want! 
     	/*if(runState == Relay.Value.kForward){
     		runStateTrue = Relay.Value.kReverse;

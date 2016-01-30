@@ -43,6 +43,8 @@ public class CMDautoGroup extends CommandGroup {
         addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
         addSequential(new CMDturn(Settings.Auto_TurnDegrees));
         addSequential(new CMDdriveForward(Settings.Auto_InchesToTower));
+        addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
+        
  
     } 
 }
