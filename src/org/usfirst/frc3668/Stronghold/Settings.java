@@ -2,7 +2,7 @@ package org.usfirst.frc3668.Stronghold;
 
 public class Settings {
 	public final static double turnDeadband = 3; // 3 degrees
-	
+
 	
 	//************
 	//PWM Ports
@@ -68,6 +68,9 @@ public class Settings {
 	public final static int Auto_RunRollerMotorSeconds = 5;
 	public final static double Auto_DriveSpeed = 0.5;
 	public final static double Auto_TurnSpeed = 0.75;
+	public final static double Auto_DriveSlowSpeed = .25;
+	public final static double Atuo_DriveDeadBand = 5;
+
 	
 	
 }

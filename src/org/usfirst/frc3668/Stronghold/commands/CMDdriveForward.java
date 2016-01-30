@@ -40,14 +40,16 @@ public class CMDdriveForward extends Command {
     	_initialHeading = Robot.chassis.getGyroAngle();
     	
     }
-
+    public double DistanceDelta(){
+    	return   _Distance - Robot.chassis.getEncoderValue();
+    }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.chassis.getEncoderValue() < _Distance){
-    		_gyroAngle = Robot.chassis.getGyroAngle();
+    	double distanceDelta = DistanceDelta();
+    	double headingError = Robot.chassis.getGyroAngle() - _initialHeading;
+    	if ((Robot.chassis.getEncoderValue() < _Distance) && (Math.abs(distanceDelta) > Settings.Atuo_DriveDeadBand)){
     		//Robot.chassis.drive(Settings.Auto_DriveSpeed, -(_gyroAngle - _initialHeading)*_Kp);
-    		Robot.chassis.drive(Settings.Auto_DriveSpeed, 0);
-    		_isFinished = false;
+    		Robot.chassis.drive((-Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed), headingError * _Kp);
     	}
     	else {
     		Robot.chassis.drive(0, 0);
