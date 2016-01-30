@@ -54,7 +54,7 @@ public class CMDturn extends Command {
     	if(headingDelta > Settings.turnDeadband){
     	if (Robot.chassis.getGyroAngle() < _DesiredHeading){
     		
-    		Robot.chassis.drive(.75, 1.0);
+    		Robot.chassis.drive(Settings.Auto_TurnSpeed, 1.0);
     		_isFinished = false;
     		
     	}

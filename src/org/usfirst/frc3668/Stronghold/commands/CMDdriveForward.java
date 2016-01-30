@@ -13,6 +13,8 @@ package org.usfirst.frc3668.Stronghold.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3668.Stronghold.Robot;
+import org.usfirst.frc3668.Stronghold.Settings;
+
 import edu.wpi.first.wpilibj.AnalogGyro;
 /**
  *
@@ -43,8 +45,8 @@ public class CMDdriveForward extends Command {
     protected void execute() {
     	if (Robot.chassis.getEncoderValue() < _Distance){
     		_gyroAngle = Robot.chassis.getGyroAngle();
-    		//Robot.chassis.drive(.5, -(_gyroAngle - _initialHeading)*_Kp);
-    		Robot.chassis.drive(.5, 0);
+    		//Robot.chassis.drive(Settings.Auto_DriveSpeed, -(_gyroAngle - _initialHeading)*_Kp);
+    		Robot.chassis.drive(Settings.Auto_DriveSpeed, 0);
     		_isFinished = false;
     	}
     	else {
