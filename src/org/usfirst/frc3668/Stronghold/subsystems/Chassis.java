@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -83,6 +84,9 @@ public class Chassis extends Subsystem {
     }
     public void drive(double Speed, double Direction){
     	robotDrive41.arcadeDrive(Speed, Direction);
+    	SmartDashboard.putNumber("Motor Right: ", motorChassisRight1.get());
+    	SmartDashboard.putNumber("Motor Left: ", motorChassisLeft1.get());
+    	
     
 }
     public void resetEncoder(){

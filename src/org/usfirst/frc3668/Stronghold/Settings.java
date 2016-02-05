@@ -48,7 +48,7 @@ public class Settings {
 	public final static double ShifterAngleLeftHighSpeed = 35;
 	public final static double ShifterAngleRightLowSpeed = 145;
 	public final static double ShifterAngleRightHighSpeed = 80;
-	public final static double EncoderDistancePerPulse = 9.765625E-4;
+	public final static double EncoderDistancePerPulse = 8*Math.PI/1440;
 	
 	
 	//*****************
@@ -62,7 +62,7 @@ public class Settings {
 	//*************
 	//Autonomous settings
 	//*************
-	public final static int Auto_InchesFromOuterworks = 60;
+	public final static int Auto_InchesFromOuterworks = 1000;
 	public final static double Auto_TurnDegrees = 90;
 	public final static int Auto_InchesToTower = 36;
 	public final static int Auto_RunRollerMotorSeconds = 5;
@@ -70,6 +70,7 @@ public class Settings {
 	public final static double Auto_TurnSpeed = 0.75;
 	public final static double Auto_DriveSlowSpeed = .25;
 	public final static double Atuo_DriveDeadBand = 5;
+	public final static double Auto_SlowDownDistance = 30; //since Matt said so... this is measured in inches
 
 	
 	

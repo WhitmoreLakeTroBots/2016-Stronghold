@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -40,6 +41,7 @@ public class RobotMap {
     public static DigitalInput boulderRollerRollerMotorSwitch;
     public static Servo chassisShifterRight;
     public static Servo chassisShifterLeft;
+    public static SmartDashboard SmartDashboard;
 
 
     public static void init() {
