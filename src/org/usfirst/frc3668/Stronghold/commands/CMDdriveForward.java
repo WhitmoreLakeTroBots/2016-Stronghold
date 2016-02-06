@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 public class CMDdriveForward extends Command {
 	boolean _isFinished;
 	int _Distance;
-	double _GyroKp = 0.03;
 	double _gyroAngle;
 	double _initialHeading;
 
@@ -24,7 +23,7 @@ public class CMDdriveForward extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.chassis.resetEncoder();
+		Robot.chassis.resetEncoders();
 		_isFinished = false;
 		System.out.println("CMDdriveForward");
 		_initialHeading = Robot.chassis.getGyroAngle();
@@ -38,15 +37,15 @@ public class CMDdriveForward extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		double distanceDelta = DistanceDelta();
-		double headingError = Robot.chassis.getGyroAngle() - _initialHeading;
-		if ((distanceDelta > 0) && (Math.abs(distanceDelta) > Settings.Atuo_DriveDeadBand)) {
+		double headingError =  _initialHeading - Robot.chassis.getGyroAngle();
+		if ((distanceDelta > 0) && (Math.abs(distanceDelta) > Settings.Auto_DriveDeadBand)) {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
-				Robot.chassis.drive((/* Math.signum(distanceDelta) * */ Settings.Auto_DriveSlowSpeed),
-						headingError * _GyroKp);
+				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed),
+						headingError);
 				System.out.println("THIS IS SLOW SPEED! "  + distanceDelta);
 			} else {
-				Robot.chassis.drive((/* Math.signum(distanceDelta) * */ Settings.Auto_DriveSpeed),
-						headingError * _GyroKp);
+				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSpeed),
+						headingError);
 				System.out.println("this is normal speed:  " + distanceDelta);
 			}
 		} else {

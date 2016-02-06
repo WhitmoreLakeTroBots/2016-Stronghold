@@ -40,7 +40,7 @@ public class CMDturn extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.chassis.resetEncoder();
+		Robot.chassis.resetEncoders();
 		_isFinished = false;
 		System.out.println("CMDturn");
 	}
@@ -49,8 +49,9 @@ public class CMDturn extends Command {
 	protected void execute() {
 		double currentHeading = Robot.chassis.getGyroAngle();
 		double headingDelta = Math.abs(_DesiredHeading - currentHeading);
+		double LeftOrRight = Math.signum(headingDelta);
 		if (headingDelta > Settings.turnDeadband && currentHeading < _DesiredHeading) {
-				Robot.chassis.drive(Settings.Auto_TurnSpeed, 1.0);
+				Robot.chassis.drive(0, Settings.Auto_TurnSpeed*LeftOrRight);
 		} else {
 			Robot.chassis.drive(0.0, 0.0);
 			_isFinished = true;

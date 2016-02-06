@@ -41,9 +41,10 @@ public class CMDautoGroup extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
         addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
-        //addSequential(new CMDturn(Settings.Auto_TurnDegrees));
-        //addSequential(new CMDdriveForward(Settings.Auto_InchesToTower));
-       // addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
+        addSequential(new CMDturn(Settings.Auto_TurnDegrees));
+       // addSequential(new CMDdriveForward(Settings.Auto_InchesToTower));
+        addSequential(new CMDturn(-Settings.Auto_TurnDegrees));
+        addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
         
  
     } 
