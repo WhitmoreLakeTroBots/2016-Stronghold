@@ -14,7 +14,6 @@ package org.usfirst.frc3668.Stronghold.subsystems;
 import org.usfirst.frc3668.Stronghold.RobotMap;
 import org.usfirst.frc3668.Stronghold.Settings;
 import org.usfirst.frc3668.Stronghold.commands.*;
-import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Joystick;
@@ -29,10 +28,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Chassis extends Subsystem {
 
-    private final CANTalon motorChassisRight1 = RobotMap.chassisMotorChassisRight1;
-    private final CANTalon motorChassisRight2 = RobotMap.chassisMotorChassisRight2;
-    private final CANTalon motorChassisLeft1 = RobotMap.chassisMotorChassisLeft1;
-    private final CANTalon motorChassisLeft2 = RobotMap.chassisMotorChassisLeft2;
+ /* private final Talon motorChassisRight1 = RobotMap.chassisMotorChassisRight1;
+    private final Talon motorChassisRight2 = RobotMap.chassisMotorChassisRight2;
+    private final Talon motorChassisLeft1 = RobotMap.chassisMotorChassisLeft1;
+    private final Talon motorChassisLeft2 = RobotMap.chassisMotorChassisLeft2; */
     private final RobotDrive robotDrive41 = RobotMap.chassisRobotDrive41;
     private final Encoder encoderChassisLeft1 = RobotMap.chassisEncoderChassisLeft1;
     private final AnalogGyro gyro = RobotMap.chassisGyro;
@@ -54,8 +53,6 @@ public class Chassis extends Subsystem {
     }
     
     public double getGyroAngle(){
-    	double gyroAngle = gyro.getAngle();
-    	//System.out.println("Gyro Angle " + gyroAngle);
 		return gyro.getAngle();
     }
    
@@ -72,7 +69,7 @@ public class Chassis extends Subsystem {
     
     public void initDefaultCommand() {
 
-        setDefaultCommand(new CMDjoystickDrive());
+       // setDefaultCommand(new CMDjoystickDrive());
 
 
         // Set the default command for a subsystem here.
@@ -80,13 +77,22 @@ public class Chassis extends Subsystem {
     }
     public void drive(Joystick joyDrive) {
     	robotDrive41.arcadeDrive(joyDrive);
+    	System.out.println("Joystick X value: " + joyDrive.getX());
+    	System.out.println("Joystick Y value: " + joyDrive.getY());
+    	System.out.println("Right Motor Teleop: " + RobotMap.chassisMotorChassisRight1.get());
+    	System.out.println("Left Motor Teleop: " + RobotMap.chassisMotorChassisLeft1.get());  
 
     }
     public void drive(double Speed, double Direction){
+    	//System.out.println("Speed = " + Speed);
+    	//System.out.println("Direction = " + Direction);
     	robotDrive41.arcadeDrive(Speed, Direction);
-    	SmartDashboard.putNumber("Motor Right: ", motorChassisRight1.get());
-    	SmartDashboard.putNumber("Motor Left: ", motorChassisLeft1.get());
-    	
+    	//RobotMap.chassisMotorChassisRight1.set(Speed);
+    	//RobotMap.chassisMotorChassisLeft1.set(Speed);
+    	//SmartDashboard.putNumber("Motor Right: ", RobotMap.chassisMotorChassisRight1.get());
+    	//SmartDashboard.putNumber("Motor Left: ", RobotMap.chassisMotorChassisLeft1.get());
+    	//System.out.println("Right Motor: " + RobotMap.chassisMotorChassisRight1.get());
+    	//System.out.println("Left Motor: " + RobotMap.chassisMotorChassisLeft1.get());
     
 }
     public void resetEncoder(){

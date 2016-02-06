@@ -62,7 +62,7 @@ public class Settings {
 	//*************
 	//Autonomous settings
 	//*************
-	public final static int Auto_InchesFromOuterworks = 1000;
+	public final static int Auto_InchesFromOuterworks = 2000;
 	public final static double Auto_TurnDegrees = 90;
 	public final static int Auto_InchesToTower = 36;
 	public final static int Auto_RunRollerMotorSeconds = 5;

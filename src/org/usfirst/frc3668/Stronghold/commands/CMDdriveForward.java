@@ -19,7 +19,7 @@ public class CMDdriveForward extends Command {
 
 	public CMDdriveForward(int Distance) {
 		_Distance = Distance;
-
+		requires(Robot.chassis);
 	}
 
 	// Called just before this Command runs the first time
@@ -39,11 +39,11 @@ public class CMDdriveForward extends Command {
 	protected void execute() {
 		double distanceDelta = DistanceDelta();
 		double headingError = Robot.chassis.getGyroAngle() - _initialHeading;
-		if ((distanceDelta > 0) || (Math.abs(distanceDelta) > Settings.Atuo_DriveDeadBand)) {
+		if ((distanceDelta > 0) && (Math.abs(distanceDelta) > Settings.Atuo_DriveDeadBand)) {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
 				Robot.chassis.drive((/* Math.signum(distanceDelta) * */ Settings.Auto_DriveSlowSpeed),
 						headingError * _GyroKp);
-				System.out.println("THIS IS SLOW SPEED! ");
+				System.out.println("THIS IS SLOW SPEED! "  + distanceDelta);
 			} else {
 				Robot.chassis.drive((/* Math.signum(distanceDelta) * */ Settings.Auto_DriveSpeed),
 						headingError * _GyroKp);
