@@ -28,10 +28,12 @@ import org.usfirst.frc3668.Stronghold.subsystems.*;
 public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
-    Command teleopCommand;
+    Command chassisTeleopCommand;
+    Command turtleTailTeleop;
     public static OI oi;
     public static Chassis chassis;
     public static BoulderRoller boulderRoller;
+    public static TurtleTail TurtleTail;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -41,6 +43,7 @@ public class Robot extends IterativeRobot {
     RobotMap.init();
         chassis = new Chassis();
         boulderRoller = new BoulderRoller();
+        TurtleTail = new TurtleTail();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
@@ -48,7 +51,8 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new CMDautoGroup();
-        teleopCommand = new CMDjoystickDrive();
+        chassisTeleopCommand = new CMDjoystickDrive();
+        turtleTailTeleop = new CMDjoystickTT();
         
     }
 
@@ -57,8 +61,9 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-    	if (teleopCommand != null) teleopCommand.cancel();
+    	if (chassisTeleopCommand != null) chassisTeleopCommand.cancel();
     	 if (autonomousCommand != null) autonomousCommand.cancel();
+    	 if (turtleTailTeleop != null) turtleTailTeleop.cancel();
     }
 
     public void disabledPeriodic() {
@@ -68,7 +73,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
         Robot.chassis.Shift(false);
-        if (teleopCommand != null) teleopCommand.cancel();
+        if (chassisTeleopCommand != null) chassisTeleopCommand.cancel();
+        if (turtleTailTeleop != null) turtleTailTeleop.cancel();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
@@ -86,7 +92,8 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         Robot.chassis.Shift(false);
-        if (teleopCommand != null) teleopCommand.start();
+        if (chassisTeleopCommand != null) chassisTeleopCommand.start();
+        if (turtleTailTeleop != null) turtleTailTeleop.start();
         
     }
 
@@ -99,7 +106,8 @@ public class Robot extends IterativeRobot {
     
     public void testInit(){
     	 if (autonomousCommand != null) autonomousCommand.cancel();
-    	if (teleopCommand != null) teleopCommand.cancel();
+    	if (chassisTeleopCommand != null) chassisTeleopCommand.cancel();
+    	 if (turtleTailTeleop != null) turtleTailTeleop.cancel();
     }
     /**
      * This function is called periodically during test mode

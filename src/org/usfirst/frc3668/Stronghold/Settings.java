@@ -45,11 +45,11 @@ public class Settings {
 	//Drive Train Settings
 	//********************
 	
-	public final static int CAN_rightMotor1ID = 0;
-	public final static int CAN_rightMotor2ID = 1;
-	public final static int CAN_leftMotor1ID = 2;
-	public final static int CAN_leftMotor2ID = 3;
-	public final static int CAN_TurtleTailMotorID = 4;
+	public final static int CAN_rightMotor1ID = 1; // THIS SHOULD BE 0!!
+	public final static int CAN_rightMotor2ID = 2;
+	public final static int CAN_leftMotor1ID = 3;
+	public final static int CAN_leftMotor2ID = 4;
+	public final static int CAN_TurtleTailMotorID = 5; // THIS SHOULD BE 4!!
 	public final static double ShifterAngleLeftLowSpeed = 117;
 	public final static double ShifterAngleLeftHighSpeed = 35;
 	public final static double ShifterAngleRightLowSpeed = 145;
@@ -63,12 +63,14 @@ public class Settings {
 	public final static int Button_joyTurbo = 1;
 	public final static int Button_rollerForward = 5;
 	public final static int Button_rollerBackward = 3;
+	public final static double Joystick_Deadband = .05;
+
 
 	
 	//*************
 	//Autonomous settings
 	//*************
-	public final static int Auto_InchesFromOuterworks = 2000;
+	public final static int Auto_InchesFromOuterworks = 50;
 	public final static double Auto_TurnDegrees = 90;
 	public final static int Auto_InchesToTower = 36;
 	public final static int Auto_RunRollerMotorSeconds = 5;
@@ -85,7 +87,7 @@ public class Settings {
 	public final static double TT_kI = 0.5;
 	public final static double TT_kD = 0.0;
 	public final static double TT_EncoderDistancePerPulse = 1/7;
-	public final static double TT_joyScale = 0.4;
+	public final static double TT_joyScale = 4;
 	public final static double TT_joyDeadBand = 0.05;
 	
 }

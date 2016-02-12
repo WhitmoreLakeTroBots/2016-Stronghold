@@ -62,9 +62,9 @@ public class OI {
         joyArticulator = new Joystick(1);
         joyDrive = new Joystick(0);
         
-        rollerBackward = new JoystickButton(joyDrive, Settings.Button_rollerBackward);
+        rollerBackward = new JoystickButton(joyArticulator, Settings.Button_rollerBackward);
         rollerBackward.whileHeld(new CMDrollerBackward());
-        rollerForward = new JoystickButton(joyDrive, Settings.Button_rollerForward);
+        rollerForward = new JoystickButton(joyArticulator, Settings.Button_rollerForward);
         rollerForward.whileHeld(new CMDrollerForward());
         joyTurbo = new JoystickButton(joyDrive, Settings.Button_joyTurbo);
         joyTurbo.whileHeld(new CMDjoystickShift());
@@ -84,7 +84,6 @@ public class OI {
     public Joystick getJoyArticulator() {
         return joyArticulator;
     }
-
 
 }
 

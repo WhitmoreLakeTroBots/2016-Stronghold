@@ -42,11 +42,12 @@ public class CMDdriveForward extends Command {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
 				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed),
 						headingError);
-				System.out.println("THIS IS SLOW SPEED! "  + distanceDelta);
+				//System.out.println("THIS IS SLOW SPEED! "  + distanceDelta);
+				//System.out.println("Encoder Value: " + Robot.chassis.getEncoderValue());
 			} else {
 				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSpeed),
 						headingError);
-				System.out.println("this is normal speed:  " + distanceDelta);
+				//System.out.println("this is normal speed:  " + distanceDelta);
 			}
 		} else {
 			Robot.chassis.drive(0, 0);
