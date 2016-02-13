@@ -39,7 +39,7 @@ public class CMDdriveForward extends Command {
 	protected void execute() {
 		
 		double distanceDelta = DistanceDelta();
-		double headingError =  _initialHeading - Robot.chassis.getGyroAngle();
+		double headingError =  _initialHeading + Robot.chassis.getGyroAngle();
 		if ((distanceDelta > 0) && (Math.abs(distanceDelta) > Settings.Auto_DriveDeadBand)) {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
 				Robot.chassis.driveStraight((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed),

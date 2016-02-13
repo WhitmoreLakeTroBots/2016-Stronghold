@@ -37,7 +37,7 @@ public class CMDturn extends Command {
 	protected void execute() {
 		double currentHeading = Robot.chassis.getGyroAngle();
 		double headingDelta = Math.abs(_DesiredHeading - currentHeading);
-		double LeftOrRight = Math.signum(headingDelta);
+		double LeftOrRight = -Math.signum(headingDelta);
 		if (headingDelta > Settings.turnDeadband && currentHeading < _DesiredHeading) {
 				Robot.chassis.driveTurn(Settings.Auto_TurnSpeed, LeftOrRight/2);
 		} else {

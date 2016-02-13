@@ -54,7 +54,7 @@ public class Settings {
 	public final static double ShifterAngleLeftHighSpeed = 35;
 	public final static double ShifterAngleRightLowSpeed = 145;
 	public final static double ShifterAngleRightHighSpeed = 80;
-	public final static double EncoderDistancePerPulse = 8*Math.PI/1440;
+	public final static double EncoderDistancePerPulse = 8.2*Math.PI/360;
 	public final static double MotorExpiration = 1000;
 	
 	
