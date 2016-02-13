@@ -26,35 +26,46 @@ public class CMDdriveForward extends Command {
 	protected void initialize() {
 		Robot.chassis.resetEncoders();
 		_isFinished = false;
-		System.out.println("CMDdriveForward");
-		_initialHeading = Robot.chassis.getGyroAngle();
+		//System.out.println("CMDdriveForward");
+		_initialHeading = Robot.chassis.getCurrentHeading();
 
 	}
 
 	public double DistanceDelta() {
 		return _Distance - Robot.chassis.getEncoderValue();
 	}
+	
+	public double headingDelta(){
+		double currentHeading = Robot.chassis.getCurrentHeading();
+		double headingdelta =_initialHeading - currentHeading;
+		if(headingdelta < -180){
+			headingdelta =+360;
+		}
+		if(headingdelta > 180){
+			headingdelta =-360;
+		}
+		return headingdelta;
+	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		
 		double distanceDelta = DistanceDelta();
-		double headingError =  _initialHeading + Robot.chassis.getGyroAngle();
 		if ((distanceDelta > 0) && (Math.abs(distanceDelta) > Settings.Auto_DriveDeadBand)) {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
-				Robot.chassis.driveStraight((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed),
-						headingError);
+				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed),
+						headingDelta()*Settings.Heading_Kp);
 				//System.out.println("THIS IS SLOW SPEED! "  + distanceDelta);
 				//System.out.println("Encoder Value: " + Robot.chassis.getEncoderValue());
 			} else {
-				Robot.chassis.driveStraight((Math.signum(distanceDelta) * Settings.Auto_DriveSpeed),
-						headingError);
+				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSpeed),
+						headingDelta()*Settings.Heading_Kp);
 				//System.out.println("this is normal speed:  " + distanceDelta);
 			}
 		} else {
-			Robot.chassis.driveStraight(0, 0);
+			Robot.chassis.drive(0, 0);
 			_isFinished = true;
-			System.out.println("********************");
+			//System.out.println("********************");
 		}
 
 		// System.out.println(Robot.chassis.getEncoderValue());
@@ -73,6 +84,6 @@ public class CMDdriveForward extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		Robot.chassis.driveStraight(0, 0);
+		Robot.chassis.drive(0, 0);
 	}
 }

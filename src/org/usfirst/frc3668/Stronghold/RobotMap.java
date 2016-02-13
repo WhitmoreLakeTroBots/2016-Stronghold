@@ -75,7 +75,7 @@ public class RobotMap {
         
         turtleTailEncoder = new Encoder(Settings.DIO_TurtleTailEncoderFirstPort, Settings.DIO_TurtleTailEncoderSecondPort, false, EncodingType.k4X);
         LiveWindow.addSensor("Turtle Tail", "Turtle Tail Encoder", turtleTailEncoder);
-        turtleTailEncoder.setDistancePerPulse(Settings.TT_EncoderDistancePerPulse);
+    //    turtleTailEncoder.setDistancePerPulse(Settings.TT_EncoderDistancePerPulse);
         turtleTailEncoder.setPIDSourceType(PIDSourceType.kRate);
         
         chassisGyro = new AnalogGyro(Settings.Analog_GryoPort);

@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CMDjoystickTT extends Command {
+public class CMDturtleTailUP extends Command {
 
-    public CMDjoystickTT() {
+    public CMDturtleTailUP() {
         // Use requires() here to declare subsystem dependencies
          requires(Robot.TurtleTail);
     }
@@ -21,7 +21,7 @@ public class CMDjoystickTT extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.TurtleTail.wagWithJoystick(Robot.oi.getJoyArticulator());
+    	Robot.TurtleTail.RaiseLower(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,5 +36,6 @@ public class CMDjoystickTT extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	RobotMap.turtleTailMotor.set(0);
     }
 }

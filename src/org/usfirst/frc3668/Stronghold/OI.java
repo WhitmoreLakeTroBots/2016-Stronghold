@@ -53,6 +53,8 @@ public class OI {
     public Joystick joyDrive;
     public JoystickButton rollerForward;
     public JoystickButton rollerBackward;
+    public JoystickButton turtleTailUP;
+    public JoystickButton turtleTailDOWN;
     public Joystick joyArticulator;
     public JoystickButton joyTurbo;
 
@@ -66,6 +68,10 @@ public class OI {
         rollerBackward.whileHeld(new CMDrollerBackward());
         rollerForward = new JoystickButton(joyArticulator, Settings.Button_rollerForward);
         rollerForward.whileHeld(new CMDrollerForward());
+        turtleTailUP = new JoystickButton(joyArticulator, Settings.Button_turtleTailUP);
+        turtleTailUP.whenPressed(new CMDturtleTailUP());
+        turtleTailDOWN = new JoystickButton(joyArticulator, Settings.Button_turtleTailDOWN);
+        turtleTailDOWN.whenPressed(new CMDturtleTailDOWN());
         joyTurbo = new JoystickButton(joyDrive, Settings.Button_joyTurbo);
         joyTurbo.whileHeld(new CMDjoystickShift());
         

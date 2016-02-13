@@ -30,18 +30,29 @@ public class CMDturn extends Command {
 	protected void initialize() {
 		Robot.chassis.resetEncoders();
 		_isFinished = false;
-		System.out.println("CMDturn");
+		//System.out.println("CMDturn");
+	}
+	public double headingDelta(){
+		double currentHeading = Robot.chassis.getCurrentHeading();
+		double headingdelta =_DesiredHeading - currentHeading;
+		if(headingdelta < -180){
+			headingdelta =+360;
+		}
+		if(headingdelta > 180){
+			headingdelta =-360;
+		}
+		return headingdelta;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double currentHeading = Robot.chassis.getGyroAngle();
-		double headingDelta = Math.abs(_DesiredHeading - currentHeading);
-		double LeftOrRight = -Math.signum(headingDelta);
+		double currentHeading = Robot.chassis.getCurrentHeading();
+		double headingDelta = headingDelta();
+		//double LeftOrRight = -Math.signum(headingDelta);
 		if (headingDelta > Settings.turnDeadband && currentHeading < _DesiredHeading) {
-				Robot.chassis.driveTurn(Settings.Auto_TurnSpeed, LeftOrRight/2);
+				Robot.chassis.drive(0 ,Math.signum(headingDelta)/ Settings.Auto_TurnSpeed);
 		} else {
-			Robot.chassis.driveStraight(0.0, 0.0);
+			Robot.chassis.drive(0.0, 0.0);
 			_isFinished = true;
 		}
 
