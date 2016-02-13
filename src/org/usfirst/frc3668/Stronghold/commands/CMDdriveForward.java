@@ -15,6 +15,7 @@ public class CMDdriveForward extends Command {
 	int _Distance;
 	double _gyroAngle;
 	double _initialHeading;
+	int loopLastCall;
 
 	public CMDdriveForward(int Distance) {
 		_Distance = Distance;
@@ -36,21 +37,22 @@ public class CMDdriveForward extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		
 		double distanceDelta = DistanceDelta();
 		double headingError =  _initialHeading - Robot.chassis.getGyroAngle();
 		if ((distanceDelta > 0) && (Math.abs(distanceDelta) > Settings.Auto_DriveDeadBand)) {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
-				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed),
+				Robot.chassis.driveStraight((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed),
 						headingError);
 				//System.out.println("THIS IS SLOW SPEED! "  + distanceDelta);
 				//System.out.println("Encoder Value: " + Robot.chassis.getEncoderValue());
 			} else {
-				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSpeed),
+				Robot.chassis.driveStraight((Math.signum(distanceDelta) * Settings.Auto_DriveSpeed),
 						headingError);
 				//System.out.println("this is normal speed:  " + distanceDelta);
 			}
 		} else {
-			Robot.chassis.drive(0, 0);
+			Robot.chassis.driveStraight(0, 0);
 			_isFinished = true;
 			System.out.println("********************");
 		}
@@ -71,6 +73,6 @@ public class CMDdriveForward extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		Robot.chassis.drive(0, 0);
+		Robot.chassis.driveStraight(0, 0);
 	}
 }

@@ -55,6 +55,7 @@ public class Settings {
 	public final static double ShifterAngleRightLowSpeed = 145;
 	public final static double ShifterAngleRightHighSpeed = 80;
 	public final static double EncoderDistancePerPulse = 8*Math.PI/1440;
+	public final static double MotorExpiration = 1000;
 	
 	
 	//*****************
@@ -75,7 +76,7 @@ public class Settings {
 	public final static int Auto_InchesToTower = 36;
 	public final static int Auto_RunRollerMotorSeconds = 5;
 	public final static double Auto_DriveSpeed = 0.5;
-	public final static double Auto_TurnSpeed = 0.75;
+	public final static double Auto_TurnSpeed = 0;
 	public final static double Auto_DriveSlowSpeed = .25;
 	public final static double Auto_DriveDeadBand = 5;
 	public final static double Auto_SlowDownDistance = 30; //since Matt said so... this is measured in inches

@@ -69,7 +69,7 @@ public class Chassis extends Subsystem {
     public void drive(Joystick joyDrive) {
     	robotDrive41.arcadeDrive(joyDrive);
     }
-    public void drive(double Speed, double Direction){
+    public void driveStraight(double Speed, double Direction){
     	double ScaledDirection = Direction * Settings.Gyro_Kp;
     	double LeftMotorSpeed = Speed + ScaledDirection/2;
     	double RightMotorSpeed = -(Speed - ScaledDirection/2);
@@ -77,10 +77,23 @@ public class Chassis extends Subsystem {
     	RobotMap.chassisMotorChassisRight2.set(RightMotorSpeed);
     	RobotMap.chassisMotorChassisLeft1.set(LeftMotorSpeed);
     	RobotMap.chassisMotorChassisLeft2.set(LeftMotorSpeed);
-    	System.out.println("Encoder Right: " + encoderChassisRight.getDistance());
-    	System.out.println("Encoder Left: " + encoderChassisLeft.getDistance());
+    	//System.out.println("Encoder Right: " + encoderChassisRight.getDistance());
+    	//System.out.println("Encoder Left: " + encoderChassisLeft.getDistance());
     
 }
+    
+    public void driveTurn(double Speed, double Direction){
+    	double LeftMotorSpeed = Speed + Direction;
+    	double RightMotorSpeed = -(Speed - Direction);
+    	RobotMap.chassisMotorChassisRight1.set(RightMotorSpeed);
+    	RobotMap.chassisMotorChassisRight2.set(RightMotorSpeed);
+    	RobotMap.chassisMotorChassisLeft1.set(LeftMotorSpeed);
+    	RobotMap.chassisMotorChassisLeft2.set(LeftMotorSpeed);
+    	//System.out.println("Encoder Right: " + encoderChassisRight.getDistance());
+    	//System.out.println("Encoder Left: " + encoderChassisLeft.getDistance());
+    
+}
+    
     public void resetEncoders(){
     	encoderChassisLeft.reset();
     	encoderChassisRight.reset();
