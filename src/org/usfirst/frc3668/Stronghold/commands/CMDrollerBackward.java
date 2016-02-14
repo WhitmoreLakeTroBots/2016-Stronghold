@@ -30,12 +30,12 @@ public class CMDrollerBackward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(!Robot.boulderRoller.getRollerSwitchState()){
+    	//if(Robot.boulderRoller.getRollerSwitchState()){
     	Robot.boulderRoller.rollerRun(Relay.Value.kReverse);
-    	}
-    	else{
-    		Robot.boulderRoller.rollerRun(Relay.Value.kOff);
-    	}
+    	//}
+    //	else{
+    	//	Robot.boulderRoller.rollerRun(Relay.Value.kOff);
+    	//}
     }
 
     // Make this return true when this Command no longer needs to run execute()

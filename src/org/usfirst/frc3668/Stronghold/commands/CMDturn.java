@@ -12,6 +12,7 @@ package org.usfirst.frc3668.Stronghold.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3668.Stronghold.Robot;
+import org.usfirst.frc3668.Stronghold.RobotCaluator;
 import org.usfirst.frc3668.Stronghold.Settings;
 
 /**
@@ -30,27 +31,16 @@ public class CMDturn extends Command {
 	protected void initialize() {
 		Robot.chassis.resetEncoders();
 		_isFinished = false;
-		//System.out.println("CMDturn");
-	}
-	public double headingDelta(){
-		double currentHeading = Robot.chassis.getCurrentHeading();
-		double headingdelta =_DesiredHeading - currentHeading;
-		if(headingdelta < -180){
-			headingdelta =+360;
-		}
-		if(headingdelta > 180){
-			headingdelta =-360;
-		}
-		return headingdelta;
+		System.out.println("CMDturn._DesiredHeading: "+_DesiredHeading);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		double currentHeading = Robot.chassis.getCurrentHeading();
-		double headingDelta = headingDelta();
-		//double LeftOrRight = -Math.signum(headingDelta);
-		if (headingDelta > Settings.turnDeadband && currentHeading < _DesiredHeading) {
-				Robot.chassis.drive(0 ,Math.signum(headingDelta)/ Settings.Auto_TurnSpeed);
+		double headingDelta = RobotCaluator.HeadingDelta(_DesiredHeading, currentHeading);
+		System.out.println("heading Delta: " + headingDelta + "\t"+ (Math.abs(headingDelta) > Settings.turnDeadband) + "\t"+ (currentHeading < _DesiredHeading));
+		if (Math.abs(headingDelta) > Settings.turnDeadband && currentHeading < _DesiredHeading) {
+				Robot.chassis.drive(0 ,Math.signum(headingDelta)* Settings.Auto_TurnSpeed);
 		} else {
 			Robot.chassis.drive(0.0, 0.0);
 			_isFinished = true;

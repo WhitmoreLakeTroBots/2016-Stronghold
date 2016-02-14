@@ -29,7 +29,12 @@ public class CMDrollerForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.boulderRoller.rollerRun(Relay.Value.kForward);
+    	if(!Robot.boulderRoller.getRollerSwitchState()){
+        	Robot.boulderRoller.rollerRun(Relay.Value.kForward);
+        	}
+        	else{
+        		Robot.boulderRoller.rollerRun(Relay.Value.kOff);
+        	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

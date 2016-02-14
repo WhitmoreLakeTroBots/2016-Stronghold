@@ -34,7 +34,7 @@ public class Settings {
 
 	public final static int Analog_GryoPort = 0;
 	public final static double GryoSensitivity = 0.007;
-	public final static double Heading_Kp = 0.03;
+	public final static double Heading_Kp = 25;
 
 	// ********************
 	// Drive Train Settings
@@ -49,7 +49,8 @@ public class Settings {
 	public final static double ShifterAngleLeftHighSpeed = 35;
 	public final static double ShifterAngleRightLowSpeed = 145;
 	public final static double ShifterAngleRightHighSpeed = 80;
-	public final static double EncoderDistancePerPulse = 8.2 * Math.PI / 360;
+	// wheel Diameter * PI / 360 * wheel part of ratio / encoder part of ratio (encoder 39:42 wheels)
+	public final static double EncoderDistancePerPulse = 7.5 * Math.PI / 360 * 42 / 39*6/5;
 	public final static double MotorExpiration = 1000;
 
 	// *****************
@@ -65,15 +66,15 @@ public class Settings {
 	// *************
 	// Autonomous settings
 	// *************
-	public final static int Auto_InchesFromOuterworks = 50;
-	public final static double Auto_TurnDegrees = 90;
+	public final static int Auto_InchesFromOuterworks = 120;
+	public final static double Auto_TurnHeading = 270;
 	public final static int Auto_InchesToTower = 36;
 	public final static int Auto_RunRollerMotorSeconds = 5;
-	public final static double Auto_DriveSpeed = 0.5;
+	public final static double Auto_DriveSpeed = 0.75;
 	public final static double Auto_TurnSpeed = 0.5;
-	public final static double Auto_DriveSlowSpeed = .25;
+	public final static double Auto_DriveSlowSpeed = .5;
 	public final static double Auto_DriveDeadBand = 5;
-	public final static double Auto_SlowDownDistance = 30; // since Matt said
+	public final static double Auto_SlowDownDistance = 18; // since Matt said
 															// so... this is
 															// measured in
 															// inches

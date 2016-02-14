@@ -14,7 +14,6 @@ package org.usfirst.frc3668.Stronghold.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.usfirst.frc3668.Stronghold.Settings;
-import org.usfirst.frc3668.Stronghold.subsystems.*;
 
 /**
  *
@@ -40,11 +39,11 @@ public class CMDautoGroup extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-        addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
-        addSequential(new CMDturn(Settings.Auto_TurnDegrees));
-        addSequential(new CMDdriveForward(Settings.Auto_InchesToTower));
+       // addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
+        addSequential(new CMDturn(Settings.Auto_TurnHeading));
+       // addSequential(new CMDdriveForward(Settings.Auto_InchesToTower));
        // addSequential(new CMDturn(-Settings.Auto_TurnDegrees));
-        addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
+       // addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
         
  
     } 
