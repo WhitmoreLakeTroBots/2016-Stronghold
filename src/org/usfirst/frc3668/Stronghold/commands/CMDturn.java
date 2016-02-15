@@ -22,25 +22,35 @@ public class CMDturn extends Command {
 	boolean _isFinished;
 	double _DesiredHeading;
 	double _gyroAngle;
-//	int loop;
+
+	// int loop;
 	public CMDturn(double DesiredHeading) {
 		_DesiredHeading = DesiredHeading;
+		requires(Robot.chassis);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.chassis.resetEncoders();
 		_isFinished = false;
-		System.out.println("CMDturn._DesiredHeading: "+_DesiredHeading);
+		System.out.println("CMDturn._DesiredHeading: " + _DesiredHeading);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		double currentHeading = Robot.chassis.getCurrentHeading();
 		double headingDelta = RobotCaluator.HeadingDelta(_DesiredHeading, currentHeading);
-		System.out.println("heading Delta: " + headingDelta + "\t"+ (Math.abs(headingDelta) > Settings.turnDeadband) + "\t"+ (currentHeading < _DesiredHeading));
-		if (Math.abs(headingDelta) > Settings.turnDeadband && currentHeading < _DesiredHeading) {
-				Robot.chassis.drive(0 ,Math.signum(headingDelta)* Settings.Auto_TurnSpeed);
+		//System.out.println("heading Delta: " + headingDelta + "\t"
+		//		+ (Math.abs(headingDelta) > Settings.Auto_turnDeadband) + "\t" + (currentHeading < _DesiredHeading));
+		if (Math.abs(
+				headingDelta) > Settings.Auto_turnDeadband ) {
+			if (Math.abs(headingDelta) < Settings.Auto_turnSlowDownBand) {
+				Robot.chassis.drive(0, Math.signum(headingDelta) * Settings.Auto_turnSlowSpeed);
+				System.out.println("We are now turning at slow speed!");
+			} else {
+				Robot.chassis.drive(0, Math.signum(headingDelta) * Settings.Auto_TurnSpeed);
+
+			}
 		} else {
 			Robot.chassis.drive(0.0, 0.0);
 			_isFinished = true;

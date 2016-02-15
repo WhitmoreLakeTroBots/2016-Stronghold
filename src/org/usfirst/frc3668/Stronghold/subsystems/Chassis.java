@@ -38,7 +38,7 @@ public class Chassis extends Subsystem {
 		gyro.calibrate();
 		gyro.reset();
 		System.out.println("initGyro");
-		System.out.println(Settings.EncoderDistancePerPulse);
+		//System.out.println(Settings.EncoderDistancePerPulse);
 	}
 
 	public void resetGyro() {
@@ -50,7 +50,7 @@ public class Chassis extends Subsystem {
 		double divResult = gyro.getAngle() / 360.0;
 		double gyroMod = divResult % 1;
 		double GMheading = gyroMod * 360.0;
-		System.out.println("Gyro Angle: " + gyro.getAngle() +"\t div Result: "+ divResult+ "\t Gyro Mod: " + gyroMod + "\t finished heading: " + GMheading );
+		//System.out.println("Gyro Angle: " + gyro.getAngle() +"\t div Result: "+ divResult+ "\t Gyro Mod: " + gyroMod + "\t finished heading: " + GMheading );
 		if (GMheading < 0) {
 			GMheading = GMheading + 360;
 		}

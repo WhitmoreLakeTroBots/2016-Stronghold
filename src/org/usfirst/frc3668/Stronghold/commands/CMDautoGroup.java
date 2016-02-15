@@ -8,7 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc3668.Stronghold.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -20,31 +19,34 @@ import org.usfirst.frc3668.Stronghold.Settings;
  */
 public class CMDautoGroup extends CommandGroup {
 
+	public CMDautoGroup() {
 
-    public CMDautoGroup() {
+		// Add Commands here:
+		// e.g. addSequential(new Command1());
+		// addSequential(new Command2());
+		// these will run in order.
 
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
+		// To run multiple commands at the same time,
+		// use addParallel()
+		// e.g. addParallel(new Command1());
+		// addSequential(new Command2());
+		// Command1 and Command2 will run in parallel.
 
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
+		// A command group will require all of the subsystems that each member
+		// would require.
+		// e.g. if Command1 requires chassis, and Command2 requires arm,
+		// a CommandGroup containing them would require both the chassis and the
+		// arm.
+		addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworks, 0));
+		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+		addSequential(new CMDturn(180));
+		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+		addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworks, 180));
+		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+		addSequential(new CMDturn(0));
+		// addSequential(new CMDdriveForward(Settings.Auto_InchesToTower));
+		// addSequential(new CMDturn(-Settings.Auto_TurnDegrees));
+		 addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
 
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
-       // addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
-        addSequential(new CMDturn(Settings.Auto_TurnHeading));
-       // addSequential(new CMDdriveForward(Settings.Auto_InchesToTower));
-       // addSequential(new CMDturn(-Settings.Auto_TurnDegrees));
-       // addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
-        
- 
-    } 
+	}
 }

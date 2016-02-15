@@ -66,18 +66,19 @@ public class Settings {
 	// *************
 	// Autonomous settings
 	// *************
-	public final static int Auto_InchesFromOuterworks = 120;
+	public final static int Auto_InchesFromOuterworks = 168;
 	public final static double Auto_TurnHeading = 270;
 	public final static int Auto_InchesToTower = 36;
-	public final static int Auto_RunRollerMotorSeconds = 5;
-	public final static double Auto_DriveSpeed = 0.75;
+	public final static int Auto_RunRollerMotorSeconds = 2;
+	public final static double Auto_DriveSpeed = 1;
 	public final static double Auto_TurnSpeed = 0.5;
-	public final static double Auto_DriveSlowSpeed = .5;
+	public final static double Auto_DriveSlowSpeed = .75;
 	public final static double Auto_DriveDeadBand = 5;
-	public final static double Auto_SlowDownDistance = 18; // since Matt said
-															// so... this is
-															// measured in
-															// inches
+	public final static double Auto_SlowDownDistance = 12;           
+	public final static double Auto_turnDeadband = 1;                    
+	public final static double Auto_turnSlowDownBand = 10;
+	public final static double Auto_turnSlowSpeed = .1;
+	public final static long Auto_delayTimeMillis = 375;
 
 	// ***************
 	// Turtle Tail Settings
@@ -94,7 +95,6 @@ public class Settings {
 	// Other Settings <3
 	// ***************
 	public static final double universalSpeedScaleFactor = 2;
-	public final static double turnDeadband = 3; // 3 degrees
 
 	
 

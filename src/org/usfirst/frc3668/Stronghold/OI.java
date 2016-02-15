@@ -78,8 +78,8 @@ public class OI {
 
 
         // SmartDashboard Buttons
-        SmartDashboard.putData("Drive Forward To Outerworks!", new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
-        SmartDashboard.putData("Drive Forward To Tower", new CMDdriveForward(Settings.Auto_InchesToTower));
+        //SmartDashboard.putData("Drive Forward To Outerworks!", new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
+       // SmartDashboard.putData("Drive Forward To Tower", new CMDdriveForward(Settings.Auto_InchesToTower));
 
     }
 

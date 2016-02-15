@@ -13,11 +13,13 @@ public class CMDdriveForward extends Command {
 	boolean _isFinished;
 	int _Distance;
 	double _gyroAngle;
-	double _initialHeading;
+	double _CommandedHeading;
 	int loopLastCall;
+	//int _CommandedHeading;
 
-	public CMDdriveForward(int Distance) {
+	public CMDdriveForward(int Distance, int CommandedHeading) {
 		_Distance = Distance;
+		_CommandedHeading = CommandedHeading;
 		requires(Robot.chassis);
 	}
 
@@ -26,7 +28,7 @@ public class CMDdriveForward extends Command {
 		Robot.chassis.resetEncoders();
 		_isFinished = false;
 		System.out.println("CMDdriveForward");
-		_initialHeading = Robot.chassis.getCurrentHeading();
+		//_CommandedHeading = Robot.chassis.getCurrentHeading();
 
 	}
 
@@ -39,7 +41,7 @@ public class CMDdriveForward extends Command {
 
 		double distanceDelta = DistanceDelta();
 
-		double joyX = RobotCaluator.Heading2Direction(_initialHeading, Robot.chassis.getCurrentHeading());
+		double joyX = RobotCaluator.Heading2Direction(_CommandedHeading, Robot.chassis.getCurrentHeading());
 		//System.out.println("JoyX = "+ joyX);
 		if ((distanceDelta > 0) && (Math.abs(distanceDelta) > Settings.Auto_DriveDeadBand)) {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
