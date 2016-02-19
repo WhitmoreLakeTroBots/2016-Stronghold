@@ -2,6 +2,7 @@ package org.usfirst.frc3668.Stronghold.commands;
 
 import org.usfirst.frc3668.Stronghold.Robot;
 import org.usfirst.frc3668.Stronghold.RobotMap;
+import org.usfirst.frc3668.Stronghold.Settings;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,7 +10,6 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class CMDturtleTailDOWN extends Command {
-
     public CMDturtleTailDOWN() {
         // Use requires() here to declare subsystem dependencies
          requires(Robot.TurtleTail);
@@ -21,12 +21,14 @@ public class CMDturtleTailDOWN extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.TurtleTail.RaiseLower(false);
+    	Robot.TurtleTail.Lower();
+    	//RobotMap.turtleTailMotor.set(-1);
+    	System.out.println("RD Turtle Tail Encoder = " + Robot.TurtleTail.getTurtleTailEconder());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	return Robot.TurtleTail.isDown();
     }
 
     // Called once after isFinished returns true

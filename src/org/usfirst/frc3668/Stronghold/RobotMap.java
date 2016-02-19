@@ -73,7 +73,7 @@ public class RobotMap {
         chassisEncoderChassisRight.setDistancePerPulse(Settings.EncoderDistancePerPulse);
         chassisEncoderChassisRight.setPIDSourceType(PIDSourceType.kRate);
         
-        turtleTailEncoder = new Encoder(Settings.DIO_TurtleTailEncoderFirstPort, Settings.DIO_TurtleTailEncoderSecondPort, false, EncodingType.k4X);
+        turtleTailEncoder = new Encoder(Settings.DIO_TurtleTailEncoderFirstPort, Settings.DIO_TurtleTailEncoderSecondPort, true, EncodingType.k4X);
         LiveWindow.addSensor("Turtle Tail", "Turtle Tail Encoder", turtleTailEncoder);
     //    turtleTailEncoder.setDistancePerPulse(Settings.TT_EncoderDistancePerPulse);
         turtleTailEncoder.setPIDSourceType(PIDSourceType.kRate);

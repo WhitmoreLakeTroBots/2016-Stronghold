@@ -76,6 +76,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
 		Robot.chassis.Shift(false);
+		Robot.TurtleTail.encoderReset();
 		if (chassisTeleopCommand != null)
 			chassisTeleopCommand.cancel();
 		if (turtleTailTeleop != null)

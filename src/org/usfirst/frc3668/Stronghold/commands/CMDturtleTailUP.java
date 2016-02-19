@@ -21,12 +21,14 @@ public class CMDturtleTailUP extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.TurtleTail.RaiseLower(true);
+    	Robot.TurtleTail.Raise();
+    	//RobotMap.turtleTailMotor.set(1);
+    	System.out.println("RU Turtle Tail Encoder = " + Robot.TurtleTail.getTurtleTailEconder());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.TurtleTail.isUP();
     }
 
     // Called once after isFinished returns true

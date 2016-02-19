@@ -89,7 +89,11 @@ public class Settings {
 //	public final static double TT_EncoderDistancePerPulse = 1 / 7;
 //	public final static double TT_joyScale = 4;
 //	public final static double TT_joyDeadBand = 0.05;
-	public final static double TT_motorSpeed = 0.5;
+	public final static double TT_motorSpeed = -0.5;
+	public final static double TT_downPosition = 885;
+	public final static double TT_slowDownBand = 75;
+	public final static double TT_slowSpeed = -0.25;
+	public final static double TT_upPosition = 1;
 	
 	// ***************
 	// Other Settings <3
