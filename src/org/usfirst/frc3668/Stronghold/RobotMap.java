@@ -58,7 +58,7 @@ public class RobotMap {
         chassisRobotDrive41 = new RobotDrive(chassisMotorChassisLeft1, chassisMotorChassisLeft2,
               chassisMotorChassisRight1, chassisMotorChassisRight2);
         
-        chassisRobotDrive41.setSafetyEnabled(false);
+        chassisRobotDrive41.setSafetyEnabled(true);
         chassisRobotDrive41.setExpiration(0.1);
         chassisRobotDrive41.setSensitivity(0.5);
         chassisRobotDrive41.setMaxOutput(1.0);
@@ -96,6 +96,6 @@ public class RobotMap {
         
         chassisShifterRight = new Servo(Settings.PWMPorts_chassisShifterRight);
         chassisShifterLeft = new Servo(Settings.PWMPorts_chassisShifterLeft);
-   
+        
     }
 }

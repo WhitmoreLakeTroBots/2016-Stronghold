@@ -1,18 +1,17 @@
 package org.usfirst.frc3668.Stronghold.commands;
 
 import org.usfirst.frc3668.Stronghold.Robot;
-import org.usfirst.frc3668.Stronghold.RobotMap;
-import org.usfirst.frc3668.Stronghold.Settings;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class CMDturtleTailDOWN extends Command {
-    public CMDturtleTailDOWN() {
+public class CMDjoyTurtleTail extends Command {
+
+    public CMDjoyTurtleTail() {
         // Use requires() here to declare subsystem dependencies
-         requires(Robot.TurtleTail);
+        requires(Robot.TurtleTail);
     }
 
     // Called just before this Command runs the first time
@@ -21,15 +20,17 @@ public class CMDturtleTailDOWN extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.TurtleTail.autoLower();
-    	//RobotMap.turtleTailMotor.set(-1);
-    	System.out.println("Lower Switch: " + Robot.TurtleTail.isDown() + "\t Turtle Tail encoder: " + Robot.TurtleTail.getTurtleTailEconder());
-    	//System.out.println("RD Turtle Tail Encoder = " + Robot.TurtleTail.getTurtleTailEconder());
+    	if(Robot.oi.joyArticulator.getY() > 0){
+    		Robot.TurtleTail.Lower(Robot.oi.joyArticulator);
+    	}
+    	if(Robot.oi.joyArticulator.getY() < 0){
+    		Robot.TurtleTail.Raise(Robot.oi.joyArticulator);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.TurtleTail.isDown();
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -39,6 +40,5 @@ public class CMDturtleTailDOWN extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	RobotMap.turtleTailMotor.set(0);
     }
 }

@@ -33,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Chassis chassis;
 	public static BoulderRoller boulderRoller;
 	public static TurtleTail TurtleTail;
+	public static boolean isDriveReversed;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -52,7 +53,7 @@ public class Robot extends IterativeRobot {
 		// instantiate the command used for the autonomous period
 		autonomousCommand = new CMDautoGroup();
 		chassisTeleopCommand = new CMDjoystickDrive();
-		turtleTailTeleop = new CMDturtleTailUP();
+		
 
 	}
 
@@ -104,9 +105,6 @@ public class Robot extends IterativeRobot {
 		Robot.chassis.Shift(false);
 		if (chassisTeleopCommand != null)
 			chassisTeleopCommand.start();
-		if (turtleTailTeleop != null)
-			turtleTailTeleop.start();
-
 	}
 
 	/**

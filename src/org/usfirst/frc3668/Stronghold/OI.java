@@ -51,12 +51,14 @@ public class OI {
 
 
     public Joystick joyDrive;
+    public JoystickButton InvertFront;
     public JoystickButton rollerForward;
     public JoystickButton rollerBackward;
     public JoystickButton turtleTailUP;
     public JoystickButton turtleTailDOWN;
     public Joystick joyArticulator;
     public JoystickButton joyTurbo;
+    public JoystickButton turtleCal;
 
 
     public OI() {
@@ -64,6 +66,8 @@ public class OI {
         joyArticulator = new Joystick(1);
         joyDrive = new Joystick(0);
         
+        turtleCal = new JoystickButton(joyArticulator, 7);
+        turtleCal.whenPressed(new CMDCalibrateturtleTail());
         rollerBackward = new JoystickButton(joyArticulator, Settings.Button_rollerBackward);
         rollerBackward.whileHeld(new CMDrollerForward());
         rollerForward = new JoystickButton(joyArticulator, Settings.Button_rollerForward);
@@ -74,13 +78,15 @@ public class OI {
         turtleTailDOWN.whenPressed(new CMDturtleTailDOWN());
         joyTurbo = new JoystickButton(joyDrive, Settings.Button_joyTurbo);
         joyTurbo.whileHeld(new CMDjoystickShift());
+        InvertFront = new JoystickButton(joyDrive, Settings.Button_joyInvertFront);
+        InvertFront.whenPressed(new CMDinvertDrive());
         
 
 
         // SmartDashboard Buttons
         //SmartDashboard.putData("Drive Forward To Outerworks!", new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
        // SmartDashboard.putData("Drive Forward To Tower", new CMDdriveForward(Settings.Auto_InchesToTower));
-
+          SmartDashboard.putData("Calibrate Turtle tail!", new CMDCalibrateturtleTail());
     }
 
     public Joystick getJoyDrive() {

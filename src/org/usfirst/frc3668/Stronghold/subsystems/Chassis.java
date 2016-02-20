@@ -1,6 +1,7 @@
 
 package org.usfirst.frc3668.Stronghold.subsystems;
 
+import org.usfirst.frc3668.Stronghold.Robot;
 import org.usfirst.frc3668.Stronghold.RobotMap;
 import org.usfirst.frc3668.Stronghold.Settings;
 import org.usfirst.frc3668.Stronghold.commands.*;
@@ -38,7 +39,7 @@ public class Chassis extends Subsystem {
 		gyro.calibrate();
 		gyro.reset();
 		System.out.println("initGyro");
-		//System.out.println(Settings.EncoderDistancePerPulse);
+		// System.out.println(Settings.EncoderDistancePerPulse);
 	}
 
 	public void resetGyro() {
@@ -46,18 +47,19 @@ public class Chassis extends Subsystem {
 	}
 
 	public double getCurrentHeading() {
-		//double Heading = (gyro.getAngle() % 360.0) * 360.0;
+		// double Heading = (gyro.getAngle() % 360.0) * 360.0;
 		double divResult = gyro.getAngle() / 360.0;
 		double gyroMod = divResult % 1;
 		double GMheading = gyroMod * 360.0;
-		//System.out.println("Gyro Angle: " + gyro.getAngle() +"\t div Result: "+ divResult+ "\t Gyro Mod: " + gyroMod + "\t finished heading: " + GMheading );
+		// System.out.println("Gyro Angle: " + gyro.getAngle() +"\t div Result:
+		// "+ divResult+ "\t Gyro Mod: " + gyroMod + "\t finished heading: " +
+		// GMheading );
 		if (GMheading < 0) {
 			GMheading = GMheading + 360;
 		}
-		
+
 		return GMheading;
 	}
-	
 
 	public double getGyroAngle() {
 		return gyro.getAngle();
@@ -82,8 +84,17 @@ public class Chassis extends Subsystem {
 	}
 
 	public void drive(Joystick joyDrive) {
-		robotDrive41.arcadeDrive(joyDrive);
-//		System.out.println("Current heading: "+getCurrentHeading());
+		double invertedJoyX = -joyDrive.getX();
+		double invertedJoyY = -joyDrive.getY();
+		//System.out.println("Inverted X axis: " + invertedJoyX + "\t Inverted Y axis: " + invertedJoyY + "\t Normal X axis: " + joyDrive.getX() + "\t Normal Y axis: " + joyDrive.getY());
+
+		if (Robot.isDriveReversed) {
+			robotDrive41.arcadeDrive(invertedJoyY,invertedJoyX );
+		} else {
+			robotDrive41.arcadeDrive(joyDrive);
+
+		}
+		// System.out.println("Current heading: "+getCurrentHeading());
 	}
 
 	public void drive(double Speed, double Direction) {

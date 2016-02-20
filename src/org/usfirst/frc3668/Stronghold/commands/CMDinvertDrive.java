@@ -1,18 +1,17 @@
 package org.usfirst.frc3668.Stronghold.commands;
 
 import org.usfirst.frc3668.Stronghold.Robot;
-import org.usfirst.frc3668.Stronghold.RobotMap;
-import org.usfirst.frc3668.Stronghold.Settings;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class CMDturtleTailDOWN extends Command {
-    public CMDturtleTailDOWN() {
+public class CMDinvertDrive extends Command {
+	boolean _isFinished = false;
+    public CMDinvertDrive() {
         // Use requires() here to declare subsystem dependencies
-         requires(Robot.TurtleTail);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -21,15 +20,13 @@ public class CMDturtleTailDOWN extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.TurtleTail.autoLower();
-    	//RobotMap.turtleTailMotor.set(-1);
-    	System.out.println("Lower Switch: " + Robot.TurtleTail.isDown() + "\t Turtle Tail encoder: " + Robot.TurtleTail.getTurtleTailEconder());
-    	//System.out.println("RD Turtle Tail Encoder = " + Robot.TurtleTail.getTurtleTailEconder());
+    	Robot.isDriveReversed = !Robot.isDriveReversed;
+    	_isFinished =true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.TurtleTail.isDown();
+        return _isFinished;
     }
 
     // Called once after isFinished returns true
@@ -39,6 +36,5 @@ public class CMDturtleTailDOWN extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	RobotMap.turtleTailMotor.set(0);
     }
 }

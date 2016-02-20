@@ -21,9 +21,10 @@ public class CMDturtleTailUP extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.TurtleTail.Raise();
+    	Robot.TurtleTail.autoRaise();
     	//RobotMap.turtleTailMotor.set(1);
-    	System.out.println("RU Turtle Tail Encoder = " + Robot.TurtleTail.getTurtleTailEconder());
+    	System.out.println("Upper Switch: " + Robot.TurtleTail.isUP() + "\t Turtle Tail encoder: " + Robot.TurtleTail.getTurtleTailEconder());
+    	//System.out.println("RU Turtle Tail Encoder = " + Robot.TurtleTail.getTurtleTailEconder());
     }
 
     // Make this return true when this Command no longer needs to run execute()
