@@ -56,7 +56,8 @@ public class Settings {
 	// *****************
 	// Joystick Settings
 	// *****************
-	public final static int Button_joyTurbo = 1;
+	public final static int Button_joyTurbo = 8;
+	public final static int Button_turtleTrigger = 1;
 	public final static int Button_joyInvertFront = 3;
 	public final static int Button_rollerForward = 5;
 	public final static int Button_rollerBackward = 3;
@@ -67,9 +68,9 @@ public class Settings {
 	// *************
 	// Autonomous settings
 	// *************
-	public final static int Auto_InchesFromOuterworks = 168;
-	public final static double Auto_TurnHeading = 270;
-	public final static int Auto_InchesToTower = 36;
+	public final static int Auto_InchesFromOuterworks = 188;
+	public final static double Auto_TurnHeading = 45;
+	public final static int Auto_InchesToTower = 125;
 	public final static int Auto_RunRollerMotorSeconds = 2;
 	public final static double Auto_DriveSpeed = 1;
 	public final static double Auto_TurnSpeed = 0.5;

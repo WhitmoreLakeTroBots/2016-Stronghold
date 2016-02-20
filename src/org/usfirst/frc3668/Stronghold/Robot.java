@@ -28,7 +28,7 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	Command chassisTeleopCommand;
-	Command turtleTailTeleop;
+	//Command turtleTailTeleop;
 	public static OI oi;
 	public static Chassis chassis;
 	public static BoulderRoller boulderRoller;
@@ -53,7 +53,7 @@ public class Robot extends IterativeRobot {
 		// instantiate the command used for the autonomous period
 		autonomousCommand = new CMDautoGroup();
 		chassisTeleopCommand = new CMDjoystickDrive();
-		
+		//turtleTailTeleop = new CMDjoyTurtleTail();
 
 	}
 
@@ -66,8 +66,6 @@ public class Robot extends IterativeRobot {
 			chassisTeleopCommand.cancel();
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		if (turtleTailTeleop != null)
-			turtleTailTeleop.cancel();
 	}
 
 	public void disabledPeriodic() {
@@ -80,8 +78,6 @@ public class Robot extends IterativeRobot {
 		Robot.TurtleTail.encoderReset();
 		if (chassisTeleopCommand != null)
 			chassisTeleopCommand.cancel();
-		if (turtleTailTeleop != null)
-			turtleTailTeleop.cancel();
 		Robot.chassis.resetGyro();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
@@ -105,6 +101,7 @@ public class Robot extends IterativeRobot {
 		Robot.chassis.Shift(false);
 		if (chassisTeleopCommand != null)
 			chassisTeleopCommand.start();
+		
 	}
 
 	/**
@@ -119,8 +116,6 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 		if (chassisTeleopCommand != null)
 			chassisTeleopCommand.cancel();
-		if (turtleTailTeleop != null)
-			turtleTailTeleop.cancel();
 	}
 
 	/**

@@ -84,7 +84,7 @@ public class Chassis extends Subsystem {
 	}
 
 	public void drive(Joystick joyDrive) {
-		double invertedJoyX = -joyDrive.getX();
+		double invertedJoyX = joyDrive.getX();
 		double invertedJoyY = -joyDrive.getY();
 		//System.out.println("Inverted X axis: " + invertedJoyX + "\t Inverted Y axis: " + invertedJoyY + "\t Normal X axis: " + joyDrive.getX() + "\t Normal Y axis: " + joyDrive.getY());
 

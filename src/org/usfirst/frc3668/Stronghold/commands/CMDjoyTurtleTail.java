@@ -1,6 +1,7 @@
 package org.usfirst.frc3668.Stronghold.commands;
 
 import org.usfirst.frc3668.Stronghold.Robot;
+import org.usfirst.frc3668.Stronghold.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,10 +22,10 @@ public class CMDjoyTurtleTail extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.oi.joyArticulator.getY() > 0){
-    		Robot.TurtleTail.Lower(Robot.oi.joyArticulator);
+    		Robot.TurtleTail.Raise(Robot.oi.joyArticulator);
     	}
     	if(Robot.oi.joyArticulator.getY() < 0){
-    		Robot.TurtleTail.Raise(Robot.oi.joyArticulator);
+    		Robot.TurtleTail.Lower(Robot.oi.joyArticulator);
     	}
     }
 
@@ -40,5 +41,6 @@ public class CMDjoyTurtleTail extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	RobotMap.turtleTailMotor.set(0);
     }
 }

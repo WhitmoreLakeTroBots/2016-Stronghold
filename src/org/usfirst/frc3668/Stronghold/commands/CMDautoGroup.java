@@ -39,13 +39,11 @@ public class CMDautoGroup extends CommandGroup {
 		// arm.
 		addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworks, 0));
 		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
-		addSequential(new CMDturn(180));
+		addSequential(new CMDturn(Settings.Auto_TurnHeading));
 		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
-		addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworks, 180));
-		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
-		addSequential(new CMDturn(0));
-		// addSequential(new CMDdriveForward(Settings.Auto_InchesToTower));
-		// addSequential(new CMDturn(-Settings.Auto_TurnDegrees));
+		addSequential(new CMDdriveForward(Settings.Auto_InchesToTower, (int) Settings.Auto_TurnHeading ));
+		//addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+		//(new CMDturn(0));
 		 addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
 
 	}
