@@ -28,66 +28,82 @@ public class TurtleTail extends Subsystem {
 	}
 
 	public boolean isDown() {
-		return !RobotMap.turtleTailLimitSwitchDOWN.get();
+		return !RobotMap.turtleTailLimitSwitchDOWN.get() || (getTurtleTailEconder() >= Settings.TT_downPosition);
 	}
-
+public boolean CalibrateIsUp() {
+	return !RobotMap.turtleTailLimitSwitchUP.get();
+}
 	public boolean isUP() {
-		return !RobotMap.turtleTailLimitSwitchUP.get();
+		return !RobotMap.turtleTailLimitSwitchUP.get() || (getTurtleTailEconder() <= Settings.TT_upPosition);
 	}
 
-	public void autoLower() {
-		double encoderVal = RobotMap.turtleTailEncoder.getDistance();
-		if (RobotMap.turtleTailLimitSwitchDOWN.get() && (encoderVal < Settings.TT_downPosition)) {
-			if (encoderVal < (Settings.TT_downPosition - Settings.TT_slowDownBand)) {
-				RobotMap.turtleTailMotor.set(Settings.TT_motorSpeed);
-			} else {
-				RobotMap.turtleTailMotor.set(Settings.TT_slowSpeed);
-			}
-
-		} else {
-			RobotMap.turtleTailMotor.set(0);
-		}
-	}
-	
-	public void Lower(Joystick joyLower) {
-		double encoderVal = RobotMap.turtleTailEncoder.getDistance();
-		if (RobotMap.turtleTailLimitSwitchDOWN.get() && (encoderVal < Settings.TT_downPosition)) {
-			RobotMap.turtleTailMotor.set(joyLower.getY());
-
+	public void Move(double vector) {
+		double direction = Math.signum(vector);
+		
+		if ((direction == 1) && !isUP()) {
+			RobotMap.turtleTailMotor.set(vector);
+			
+		} else if (direction == -1 && !isDown()) {
+			RobotMap.turtleTailMotor.set(vector);
+			
 		} else {
 			RobotMap.turtleTailMotor.set(0);
 		}
 	}
 
-	public void Raise(Joystick joyRaise) {
-		double encoderVal = RobotMap.turtleTailEncoder.getDistance();
-		if (RobotMap.turtleTailLimitSwitchUP.get() && (encoderVal > Settings.TT_upPosition)) {
-			RobotMap.turtleTailMotor.set(joyRaise.getY());
-
-		} else {
-			RobotMap.turtleTailMotor.set(0);
-		}
-
-	}
-	
-	public void autoRaise() {
-		double encoderVal = RobotMap.turtleTailEncoder.getDistance();
-		if (RobotMap.turtleTailLimitSwitchUP.get() && (encoderVal > Settings.TT_upPosition)) {
-			if (encoderVal > (Settings.TT_slowDownBand + Settings.TT_upPosition)) {
-				RobotMap.turtleTailMotor.set(-Settings.TT_motorSpeed);
-			} else {
-				RobotMap.turtleTailMotor.set(-Settings.TT_slowSpeed);
-			}
-
-		} else {
-			RobotMap.turtleTailMotor.set(0);
-		}
-
-	}
+//	public void autoLower() {
+//		double encoderVal = RobotMap.turtleTailEncoder.getDistance();
+//		if (RobotMap.turtleTailLimitSwitchDOWN.get() && (encoderVal < Settings.TT_downPosition)) {
+//			if (encoderVal < (Settings.TT_downPosition - Settings.TT_slowDownBand)) {
+//				RobotMap.turtleTailMotor.set(Settings.TT_motorSpeed);
+//			} else {
+//				RobotMap.turtleTailMotor.set(Settings.TT_slowSpeed);
+//			}
+//
+//		} else {
+//			RobotMap.turtleTailMotor.set(0);
+//		}
+//	}
+//
+//	public void Lower(Joystick joyLower) {
+//		double encoderVal = RobotMap.turtleTailEncoder.getDistance();
+//		if (RobotMap.turtleTailLimitSwitchDOWN.get() && (encoderVal < Settings.TT_downPosition)) {
+//			RobotMap.turtleTailMotor.set(joyLower.getY());
+//
+//		} else {
+//			RobotMap.turtleTailMotor.set(0);
+//		}
+//	}
+//
+//	public void Raise(Joystick joyRaise) {
+//		double encoderVal = RobotMap.turtleTailEncoder.getDistance();
+//		if (RobotMap.turtleTailLimitSwitchUP.get() && (encoderVal > Settings.TT_upPosition)) {
+//			RobotMap.turtleTailMotor.set(joyRaise.getY());
+//
+//		} else {
+//			RobotMap.turtleTailMotor.set(0);
+//		}
+//
+//	}
+//
+//	public void autoRaise() {
+//		double encoderVal = RobotMap.turtleTailEncoder.getDistance();
+//		if (RobotMap.turtleTailLimitSwitchUP.get() && (encoderVal > Settings.TT_upPosition)) {
+//			if (encoderVal > (Settings.TT_slowDownBand + Settings.TT_upPosition)) {
+//				RobotMap.turtleTailMotor.set(-Settings.TT_motorSpeed);
+//			} else {
+//				RobotMap.turtleTailMotor.set(-Settings.TT_slowSpeed);
+//			}
+//
+//		} else {
+//			RobotMap.turtleTailMotor.set(0);
+//		}
+//
+//	}
 
 	public void RaiseNoEcncoder() {
-		if (!isUP()) {
-			RobotMap.turtleTailMotor.set(-Settings.TT_slowSpeed);
+		if (!RobotMap.turtleTailLimitSwitchUP.get()) {
+			RobotMap.turtleTailMotor.set(Settings.TT_slowSpeed);
 
 		} else {
 			RobotMap.turtleTailMotor.set(0);

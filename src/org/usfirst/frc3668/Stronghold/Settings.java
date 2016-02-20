@@ -69,7 +69,7 @@ public class Settings {
 	// Autonomous settings
 	// *************
 	public final static int Auto_InchesFromOuterworks = 188;
-	public final static double Auto_TurnHeading = 45;
+	public final static int Auto_TurnHeading = 45;
 	public final static int Auto_InchesToTower = 125;
 	public final static int Auto_RunRollerMotorSeconds = 2;
 	public final static double Auto_DriveSpeed = 1;
@@ -79,7 +79,7 @@ public class Settings {
 	public final static double Auto_SlowDownDistance = 12;           
 	public final static double Auto_turnDeadband = 1;                    
 	public final static double Auto_turnSlowDownBand = 10;
-	public final static double Auto_turnSlowSpeed = .1;
+	public final static double Auto_turnSlowSpeed = .3;
 	public final static long Auto_delayTimeMillis = 375;
 
 	// ***************
@@ -91,10 +91,10 @@ public class Settings {
 //	public final static double TT_EncoderDistancePerPulse = 1 / 7;
 //	public final static double TT_joyScale = 4;
 //	public final static double TT_joyDeadBand = 0.05;
-	public final static double TT_motorSpeed = -0.5;
+	public final static double TT_motorSpeed = 0.5;
 	public final static double TT_downPosition = 865;
 	public final static double TT_slowDownBand = 75;
-	public final static double TT_slowSpeed = -0.35;
+	public final static double TT_slowSpeed = 0.35;
 	public final static double TT_upPosition = 1;
 	
 	// ***************

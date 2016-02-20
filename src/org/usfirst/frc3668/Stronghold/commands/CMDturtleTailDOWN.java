@@ -21,8 +21,12 @@ public class CMDturtleTailDOWN extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.TurtleTail.autoLower();
-    	//RobotMap.turtleTailMotor.set(-1);
+//    	Robot.TurtleTail.autoLower();
+		if (Robot.TurtleTail.getTurtleTailEconder() < (Settings.TT_downPosition - Settings.TT_slowDownBand)) {
+			Robot.TurtleTail.Move(-Settings.TT_motorSpeed);
+		} else {
+			Robot.TurtleTail.Move(-Settings.TT_slowSpeed);
+		}
     	System.out.println("Lower Switch: " + Robot.TurtleTail.isDown() + "\t Turtle Tail encoder: " + Robot.TurtleTail.getTurtleTailEconder());
     	//System.out.println("RD Turtle Tail Encoder = " + Robot.TurtleTail.getTurtleTailEconder());
     }
@@ -34,11 +38,12 @@ public class CMDturtleTailDOWN extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.TurtleTail.Move(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	RobotMap.turtleTailMotor.set(0);
+    	Robot.TurtleTail.Move(0);
     }
 }
