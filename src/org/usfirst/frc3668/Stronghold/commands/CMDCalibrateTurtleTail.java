@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CMDCalibrateturtleTail extends Command {
+public class CMDCalibrateTurtleTail extends Command {
 	
 	boolean _isFinished; 
 
-    public CMDCalibrateturtleTail() {
+    public CMDCalibrateTurtleTail() {
         // Use requires() here to declare subsystem dependencies
          requires(Robot.TurtleTail);
     }

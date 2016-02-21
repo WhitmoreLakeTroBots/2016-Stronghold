@@ -17,9 +17,9 @@ import org.usfirst.frc3668.Stronghold.Settings;
 /**
  *
  */
-public class CMDautoGroup extends CommandGroup {
+public class CMDautoLowBar extends CommandGroup {
 
-	public CMDautoGroup() {
+	public CMDautoLowBar() {
 
 		// Add Commands here:
 		// e.g. addSequential(new Command1());

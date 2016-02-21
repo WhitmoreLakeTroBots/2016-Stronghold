@@ -70,15 +70,15 @@ public class OI {
         turtleTrigger = new JoystickButton(joyArticulator, Settings.Button_turtleTrigger);
         turtleTrigger.whileHeld(new CMDjoyTurtleTail());
         turtleCal = new JoystickButton(joyArticulator, 7);
-        turtleCal.whenPressed(new CMDCalibrateturtleTail());
+        turtleCal.whenPressed(new CMDCalibrateTurtleTail());
         rollerBackward = new JoystickButton(joyArticulator, Settings.Button_rollerBackward);
         rollerBackward.whileHeld(new CMDrollerForward());
         rollerForward = new JoystickButton(joyArticulator, Settings.Button_rollerForward);
         rollerForward.whileHeld(new CMDrollerBackward());
         turtleTailUP = new JoystickButton(joyArticulator, Settings.Button_turtleTailUP);
-        turtleTailUP.whenPressed(new CMDturtleTailUP());
+        //turtleTailUP.whenPressed(new CMDturtleTailUP());
         turtleTailDOWN = new JoystickButton(joyArticulator, Settings.Button_turtleTailDOWN);
-        turtleTailDOWN.whenPressed(new CMDturtleTailDOWN());
+       // turtleTailDOWN.whenPressed(new CMDturtleTailDOWN());
         joyTurbo = new JoystickButton(joyDrive, Settings.Button_joyTurbo);
         joyTurbo.whileHeld(new CMDjoystickShift());
         InvertFront = new JoystickButton(joyDrive, Settings.Button_joyInvertFront);
@@ -89,7 +89,7 @@ public class OI {
         // SmartDashboard Buttons
         //SmartDashboard.putData("Drive Forward To Outerworks!", new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
        // SmartDashboard.putData("Drive Forward To Tower", new CMDdriveForward(Settings.Auto_InchesToTower));
-          SmartDashboard.putData("Calibrate Turtle tail!", new CMDCalibrateturtleTail());
+          SmartDashboard.putData("Calibrate Turtle tail!", new CMDCalibrateTurtleTail());
           SmartDashboard.putBoolean("Turtle Tail State: ", Robot.TurtleTail.isUP());
     }
 

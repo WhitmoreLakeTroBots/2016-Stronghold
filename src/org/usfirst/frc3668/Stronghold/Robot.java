@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc3668.Stronghold.commands.*;
 import org.usfirst.frc3668.Stronghold.subsystems.*;
 
@@ -29,6 +32,9 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	Command chassisTeleopCommand;
 	//Command turtleTailTeleop;
+	
+	SendableChooser autoChooser;
+	
 	public static OI oi;
 	public static Chassis chassis;
 	public static BoulderRoller boulderRoller;
@@ -45,13 +51,18 @@ public class Robot extends IterativeRobot {
 		Robot.chassis.initGyro();
 		boulderRoller = new BoulderRoller();
 		TurtleTail = new TurtleTail();
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault("Low Bar Autonomous [With Score]", new CMDautoLowBar());
+		autoChooser.addObject("Portcillis Autonomous [No Score]", new CMDautoPortcullis());
+		autoChooser.addObject("All-Terrian Autonomous [No Score]", new CMDautoTerrian());
+		SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
+		
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
 		// constructed yet. Thus, their requires() statements may grab null
 		// pointers. Bad news. Don't move it.
 		oi = new OI();
 		// instantiate the command used for the autonomous period
-		autonomousCommand = new CMDautoGroup();
 		chassisTeleopCommand = new CMDjoystickDrive();
 		//turtleTailTeleop = new CMDjoyTurtleTail();
 
@@ -74,6 +85,7 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
+		autonomousCommand = (Command) autoChooser.getSelected();
 		Robot.chassis.Shift(false);
 		Robot.TurtleTail.encoderReset();
 		if (chassisTeleopCommand != null)
