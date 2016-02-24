@@ -11,15 +11,17 @@ import org.usfirst.frc3668.Stronghold.RobotCaluator;
  */
 public class CMDdriveForward extends Command {
 	boolean _isFinished;
-	int _Distance;
+	double _Distance;
 	double _gyroAngle;
 	double _CommandedHeading;
 	int loopLastCall;
+	double _fastSpeed;
 	//int _CommandedHeading;
 
-	public CMDdriveForward(int Distance, int CommandedHeading) {
+	public CMDdriveForward(double Distance, int CommandedHeading, double Speed) {
 		_Distance = Distance;
 		_CommandedHeading = CommandedHeading;
+		_fastSpeed = Speed;
 		requires(Robot.chassis);
 	}
 
@@ -47,7 +49,7 @@ public class CMDdriveForward extends Command {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
 				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed), joyX);
 			} else {
-				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSpeed), joyX);
+				Robot.chassis.drive((Math.signum(distanceDelta) * _fastSpeed), joyX);
 				// System.out.println("this is normal speed: " + distanceDelta);
 			}
 		} else {

@@ -25,8 +25,8 @@ public class Settings {
 	public final static int DIO_TurtleTailEncoderFirstPort = 4;
 	public final static int DIO_TurtleTailEncoderSecondPort = 5;
 	public final static int DIO_rollerLimitSwitch = 6;
-	public final static int DIO_TurtleTailLimitSwitchUP = 7;
-	public final static int DIO_TurtleTailLimitSwitchDOWN = 8;
+	public final static int DIO_TurtleTailLimitSwitchUP = 8;
+	public final static int DIO_TurtleTailLimitSwitchDOWN = 7;
 
 	// ********************
 	// Analog Settings
@@ -68,11 +68,19 @@ public class Settings {
 	// *************
 	// Autonomous settings
 	// *************
-	public final static int Auto_InchesFromOuterworks = 188;
-	public final static int Auto_TurnHeading = 45;
-	public final static int Auto_InchesToTower = 125;
+	public final static double Auto_InchesFromOuterworksLowBar = 196.75;
+	public final static double Auto_InchesToDefenseTerrian = 36;
+	public final static double Auto_InchesToCrossDefenseTerrian = 72;
+	public final static double Auto_InchesAfterDefenseTerrian = 36;
+	public final static double Auto_InchesToPortcullis = -36;
+	public final static double Auto_InchesUnderPortcullis = -18;
+	public final static double Auto_InchesAfterPortcullis = -48;
+	public final static int Auto_TurnHeadingLowBar = 45;
+	public final static int Auto_InchesToTowerLowBar = 125;
 	public final static int Auto_RunRollerMotorSeconds = 2;
 	public final static double Auto_DriveSpeed = 1;
+	public final static double Auto_TerrianNormalSpeed = Auto_DriveSpeed;
+	public final static double Auto_TerrianFastSpeed = 1;
 	public final static double Auto_TurnSpeed = 0.5;
 	public final static double Auto_DriveSlowSpeed = .75;
 	public final static double Auto_DriveDeadBand = 5;
@@ -96,6 +104,7 @@ public class Settings {
 	public final static double TT_slowDownBand = 75;
 	public final static double TT_slowSpeed = 0.35;
 	public final static double TT_upPosition = 1;
+	public final static double TT_scaleFactor = 0.5;
 	
 	// ***************
 	// Other Settings <3

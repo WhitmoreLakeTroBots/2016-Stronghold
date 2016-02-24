@@ -3,7 +3,6 @@ package org.usfirst.frc3668.Stronghold.subsystems;
 import org.usfirst.frc3668.Stronghold.RobotMap;
 import org.usfirst.frc3668.Stronghold.Settings;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -38,13 +37,14 @@ public class TurtleTail extends Subsystem {
 	}
 
 	public boolean CalibrateIsUp() {
-		return !RobotMap.turtleTailLimitSwitchUP.get();
+		return RobotMap.turtleTailLimitSwitchUP.get();
 	}
 
 	public boolean isUP() {
 		//System.out.println("The real value of the upper switch is " + RobotMap.turtleTailLimitSwitchUP.get());
 		return RobotMap.turtleTailLimitSwitchUP
-				.get() /*
+				.get() 
+				/*
 						 * || (getTurtleTailEconder() <= Settings.TT_upPosition)
 						 */;
 	}
@@ -52,13 +52,13 @@ public class TurtleTail extends Subsystem {
 	public void Move(double vector) {
 		double direction = Math.signum(vector);
 		//System.out.println("Vector of " + vector + "\t Is up? " + isUP() + "\t Is down? " + isDown());
-		if ((direction == -1) && isUP()) {
+		if ((direction == 1) && !isUP()) {
 			RobotMap.turtleTailMotor.set(vector);
-			System.out.println("Running motor down");
+			//System.out.println("Running motor down");
 
-		} else if (direction == 1 && isDown()) {
+		} else if (direction == -1 && !isDown()) {
 			RobotMap.turtleTailMotor.set(vector);
-			System.out.println("Running motor up");
+			//System.out.println("Running motor up");
 
 		} else {
 			RobotMap.turtleTailMotor.set(0);

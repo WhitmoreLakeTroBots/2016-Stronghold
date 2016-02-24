@@ -1,5 +1,7 @@
 package org.usfirst.frc3668.Stronghold.commands;
 
+import org.usfirst.frc3668.Stronghold.Settings;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -24,5 +26,9 @@ public class CMDautoTerrian extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addSequential(new CMDdriveForward(Settings.Auto_InchesToDefenseTerrian,0, Settings.Auto_TerrianNormalSpeed));
+    	addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+    	addSequential(new CMDdriveForward(Settings.Auto_InchesToCrossDefenseTerrian ,0, Settings.Auto_TerrianFastSpeed));
+    	addSequential(new CMDdriveForward(Settings.Auto_InchesAfterDefenseTerrian,0, Settings.Auto_TerrianNormalSpeed));
     }
 }
