@@ -60,6 +60,7 @@ public class OI {
     public JoystickButton joyTurbo;
     public JoystickButton turtleCal;
     public JoystickButton turtleTrigger;
+    public JoystickButton AccelReadOut;
 
 
     public OI() {
@@ -67,6 +68,8 @@ public class OI {
         joyArticulator = new Joystick(1);
         joyDrive = new Joystick(0);
         
+        AccelReadOut = new JoystickButton(joyDrive, 9);
+        AccelReadOut.whenPressed(new CMDAccelTest());
         turtleTrigger = new JoystickButton(joyArticulator, Settings.Button_turtleTrigger);
         turtleTrigger.whileHeld(new CMDjoyTurtleTail());
         turtleCal = new JoystickButton(joyArticulator, 7);

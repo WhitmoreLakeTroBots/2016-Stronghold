@@ -2,6 +2,7 @@
 package org.usfirst.frc3668.Stronghold;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -20,6 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * floating around.
  */
 public class RobotMap {
+	public static Accelerometer Accel; 
     public static CANTalon chassisMotorChassisRight1;
     public static CANTalon chassisMotorChassisRight2;
     public static CANTalon chassisMotorChassisLeft1;
@@ -96,6 +99,8 @@ public class RobotMap {
         
         chassisShifterRight = new Servo(Settings.PWMPorts_chassisShifterRight);
         chassisShifterLeft = new Servo(Settings.PWMPorts_chassisShifterLeft);
+        
+        Accel = new BuiltInAccelerometer(Accelerometer.Range.k4G);
         
     }
 }

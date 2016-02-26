@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -25,6 +26,7 @@ public class Chassis extends Subsystem {
 	 * Talon motorChassisLeft1 = RobotMap.chassisMotorChassisLeft1; private
 	 * final Talon motorChassisLeft2 = RobotMap.chassisMotorChassisLeft2;
 	 */
+	private final Accelerometer Accel = RobotMap.Accel;
 	private final RobotDrive robotDrive41 = RobotMap.chassisRobotDrive41;
 	private final Encoder encoderChassisLeft = RobotMap.chassisEncoderChassisLeft;
 	private final Encoder encoderChassisRight = RobotMap.chassisEncoderChassisRight;
@@ -34,6 +36,19 @@ public class Chassis extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
+	
+	public double getAccelX(){
+		return Accel.getX();
+	}
+	
+	public double getAccelY(){
+		return Accel.getY();
+	}
+	
+	public double getAccelZ(){
+		return Accel.getZ();
+	}
+	
 	public void initGyro() {
 		gyro.initGyro();
 		gyro.calibrate();

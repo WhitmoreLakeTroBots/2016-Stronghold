@@ -16,7 +16,7 @@ public class CMDdriveForward extends Command {
 	double _CommandedHeading;
 	int loopLastCall;
 	double _fastSpeed;
-	//int _CommandedHeading;
+	// int _CommandedHeading;
 
 	public CMDdriveForward(double Distance, int CommandedHeading, double Speed) {
 		_Distance = Distance;
@@ -30,7 +30,7 @@ public class CMDdriveForward extends Command {
 		Robot.chassis.resetEncoders();
 		_isFinished = false;
 		System.out.println("CMDdriveForward");
-		//_CommandedHeading = Robot.chassis.getCurrentHeading();
+		// _CommandedHeading = Robot.chassis.getCurrentHeading();
 
 	}
 
@@ -40,11 +40,15 @@ public class CMDdriveForward extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-
+		double X = Robot.chassis.getAccelX();
+		// double Y = Robot.chassis.getAccelY();
+		if (Math.abs(X) > 0.1) {
+			System.out.println(X);
+		}
 		double distanceDelta = DistanceDelta();
 
 		double joyX = RobotCaluator.Heading2Direction(_CommandedHeading, Robot.chassis.getCurrentHeading());
-		//System.out.println("JoyX = "+ joyX);
+		// System.out.println("JoyX = "+ joyX);
 		if ((distanceDelta > 0) && (Math.abs(distanceDelta) > Settings.Auto_DriveDeadBand)) {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
 				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed), joyX);

@@ -75,6 +75,7 @@ public class Settings {
 	public final static double Auto_InchesToPortcullis = -36;
 	public final static double Auto_InchesUnderPortcullis = -18;
 	public final static double Auto_InchesAfterPortcullis = -48;
+	public final static double Auto_PortcullisTurnHeadingEnd = 180;
 	public final static int Auto_TurnHeadingLowBar = 45;
 	public final static int Auto_InchesToTowerLowBar = 125;
 	public final static int Auto_RunRollerMotorSeconds = 2;

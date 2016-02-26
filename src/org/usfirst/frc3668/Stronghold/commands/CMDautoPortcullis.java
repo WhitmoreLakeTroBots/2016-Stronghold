@@ -32,5 +32,6 @@ public class CMDautoPortcullis extends CommandGroup {
     	addSequential(new CMDdriveForward(Settings.Auto_InchesToPortcullis,0,Settings.Auto_DriveSpeed)); //driving up to the Portcullis
     	addSequential(new CMDdriveForward(Settings.Auto_InchesUnderPortcullis,0,Settings.Auto_DriveSpeed)); //driving under Portcullis
     	addSequential(new CMDdriveForward(Settings.Auto_InchesAfterPortcullis,0,Settings.Auto_DriveSpeed));
+    	addSequential(new CMDturn(Settings.Auto_PortcullisTurnHeadingEnd));
     }
 }
