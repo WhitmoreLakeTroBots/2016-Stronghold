@@ -68,27 +68,27 @@ public class Settings {
 	// *************
 	// Autonomous settings
 	// *************
-	public final static double Auto_InchesFromOuterworksLowBar = 196.75;
-	public final static double Auto_InchesToDefenseTerrian = 36;
+	public final static double Auto_InchesFromOuterworksLowBar = 184.75;
+	public final static double Auto_InchesToDefenseTerrian = 78;
 	public final static double Auto_InchesToCrossDefenseTerrian = 72;
 	public final static double Auto_InchesAfterDefenseTerrian = 36;
 	public final static double Auto_InchesToPortcullis = -36;
 	public final static double Auto_InchesUnderPortcullis = -18;
 	public final static double Auto_InchesAfterPortcullis = -48;
 	public final static double Auto_PortcullisTurnHeadingEnd = 180;
-	public final static int Auto_TurnHeadingLowBar = 45;
-	public final static int Auto_InchesToTowerLowBar = 125;
+	public final static int Auto_TurnHeadingLowBar = 50;
+	public final static int Auto_InchesToTowerLowBar = 137;
 	public final static int Auto_RunRollerMotorSeconds = 2;
 	public final static double Auto_DriveSpeed = 1;
 	public final static double Auto_TerrianNormalSpeed = Auto_DriveSpeed;
 	public final static double Auto_TerrianFastSpeed = 1;
-	public final static double Auto_TurnSpeed = 0.5;
+	public final static double Auto_TurnSpeed = 0.6;
 	public final static double Auto_DriveSlowSpeed = .75;
 	public final static double Auto_DriveDeadBand = 5;
 	public final static double Auto_SlowDownDistance = 12;           
 	public final static double Auto_turnDeadband = 1;                    
 	public final static double Auto_turnSlowDownBand = 10;
-	public final static double Auto_turnSlowSpeed = .3;
+	public final static double Auto_turnSlowSpeed = .4;
 	public final static long Auto_delayTimeMillis = 375;
 
 	// ***************

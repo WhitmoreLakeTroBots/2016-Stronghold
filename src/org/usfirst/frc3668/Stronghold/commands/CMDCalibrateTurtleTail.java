@@ -23,7 +23,7 @@ public class CMDCalibrateTurtleTail extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println("Upper Switch: " + Robot.TurtleTail.isUP() + "\t Lower Switch: " + Robot.TurtleTail.isDown());
+    	//System.out.println("Upper Switch: " + Robot.TurtleTail.isUP() + "\t Lower Switch: " + Robot.TurtleTail.isDown());
     	if (Robot.TurtleTail.CalibrateIsUp()) {
     	Robot.TurtleTail.encoderReset();
     		_isFinished = true;

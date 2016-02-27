@@ -4,9 +4,6 @@ import org.usfirst.frc3668.Stronghold.Settings;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class CMDautoPortcullis extends CommandGroup {
     
     public  CMDautoPortcullis() {
@@ -26,12 +23,21 @@ public class CMDautoPortcullis extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new CMDCalibrateTurtleTail());
-    	addSequential(new CMDturtleTailDOWN());
-    	addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
-    	addSequential(new CMDdriveForward(Settings.Auto_InchesToPortcullis,0,Settings.Auto_DriveSpeed)); //driving up to the Portcullis
+    	CommandGroup StartTT = new CommandGroup();
+    	StartTT.addSequential(new CMDCalibrateTurtleTail());
+    	StartTT.addSequential(new CMDturtleTailDOWN());
+    	
+    	CommandGroup StartUP = new CommandGroup();
+    	StartUP.addParallel(StartTT);
+    	StartUP.addParallel(new CMDdriveForward(Settings.Auto_InchesToPortcullis,0,Settings.Auto_DriveSpeed));
+    	
+    	addSequential(StartUP);
+    	//System.out.println("Sartup commands finished");
+    	//addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+    	//addSequential(new CMDdriveForward(Settings.Auto_InchesToPortcullis,0,Settings.Auto_DriveSpeed)); //driving up to the Portcullis
     	addSequential(new CMDdriveForward(Settings.Auto_InchesUnderPortcullis,0,Settings.Auto_DriveSpeed)); //driving under Portcullis
     	addSequential(new CMDdriveForward(Settings.Auto_InchesAfterPortcullis,0,Settings.Auto_DriveSpeed));
     	addSequential(new CMDturn(Settings.Auto_PortcullisTurnHeadingEnd));
+    	//System.out.println("Auto is done, turn executed");
     }
 }
