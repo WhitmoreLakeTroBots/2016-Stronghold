@@ -49,9 +49,11 @@ public class CMDdriveForward extends Command {
 
 		double joyX = RobotCaluator.Heading2Direction(_CommandedHeading, Robot.chassis.getCurrentHeading());
 		// System.out.println("JoyX = "+ joyX);
-		if ((distanceDelta > 0) && (Math.abs(distanceDelta) > Settings.Auto_DriveDeadBand)) {
+		if ((Math.abs(distanceDelta) > 0) && (Math.abs(distanceDelta) > Settings.Auto_DriveDeadBand)) {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
-				Robot.chassis.drive((Math.signum(distanceDelta) * Settings.Auto_DriveSlowSpeed), joyX);
+				Robot.chassis.drive((Math.signum(distanceDelta)
+						* Math.max(_fastSpeed * Settings.Auto_DriveSlowSpeedFactor, Settings.Auto_DriveSlowSpeedFloor)),
+						joyX);
 			} else {
 				Robot.chassis.drive((Math.signum(distanceDelta) * _fastSpeed), joyX);
 				// System.out.println("this is normal speed: " + distanceDelta);

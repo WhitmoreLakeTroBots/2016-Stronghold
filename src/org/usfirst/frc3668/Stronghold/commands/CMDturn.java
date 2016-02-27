@@ -46,7 +46,7 @@ public class CMDturn extends Command {
 				headingDelta) > Settings.Auto_turnDeadband ) {
 			if (Math.abs(headingDelta) < Settings.Auto_turnSlowDownBand) {
 				Robot.chassis.drive(0, Math.signum(headingDelta) * Settings.Auto_turnSlowSpeed);
-				System.out.println("We are now turning at slow speed!");
+			//	System.out.println("We are now turning at slow speed!");
 			} else {
 				Robot.chassis.drive(0, Math.signum(headingDelta) * Settings.Auto_TurnSpeed);
 

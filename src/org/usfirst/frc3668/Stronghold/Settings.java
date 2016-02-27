@@ -83,7 +83,8 @@ public class Settings {
 	public final static double Auto_TerrianNormalSpeed = Auto_DriveSpeed;
 	public final static double Auto_TerrianFastSpeed = 1;
 	public final static double Auto_TurnSpeed = 0.6;
-	public final static double Auto_DriveSlowSpeed = .75;
+	public final static double Auto_DriveSlowSpeedFloor = .4;
+	public final static double Auto_DriveSlowSpeedFactor = 0.6;
 	public final static double Auto_DriveDeadBand = 5;
 	public final static double Auto_SlowDownDistance = 12;           
 	public final static double Auto_turnDeadband = 1;                    
