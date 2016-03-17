@@ -68,18 +68,22 @@ public class Settings {
 	// *************
 	// Autonomous settings
 	// *************
-	public final static double Auto_InchesFromOuterworksLowBar = 184.75;
-	public final static double Auto_InchesToDefenseTerrian = 78;
-	public final static double Auto_InchesToCrossDefenseTerrian = 72;
-	public final static double Auto_InchesAfterDefenseTerrian = 36;
+	public final static long AUto_Millis2DoNothing = 16000;
+	public final static double Auto_SpyDistance2Turn = 87;
+	public final static double Auto_SpyDistance2goal = 65;
+	public final static int Auto_SpyTurnHeading = 219;
+	public final static double Auto_InchesFromOuterworksLowBar = 168.75;
+	public final static double Auto_InchesToDefenseTerrian = 70;
+	public final static double Auto_InchesToCrossDefenseTerrian = 84;
+	public final static double Auto_InchesAfterDefenseTerrian = 66;
 	public final static double Auto_InchesToPortcullis = -36;
-	public final static double Auto_InchesUnderPortcullis = -18;
-	public final static double Auto_InchesAfterPortcullis = -48;
+	public final static double Auto_InchesUnderPortcullis = -24;
+	public final static double Auto_InchesAfterPortcullis = -144;
 	public final static double Auto_PortcullisTurnHeadingEnd = 180;
 	public final static int Auto_TurnHeadingLowBar = 50;
 	public final static int Auto_InchesToTowerLowBar = 137;
 	public final static int Auto_RunRollerMotorSeconds = 2;
-	public final static double Auto_DriveSpeed = 1;
+	public final static double Auto_DriveSpeed = 0.85;
 	public final static double Auto_TerrianNormalSpeed = Auto_DriveSpeed;
 	public final static double Auto_TerrianFastSpeed = 1;
 	public final static double Auto_TurnSpeed = 0.6;

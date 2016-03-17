@@ -10,6 +10,7 @@
 
 package org.usfirst.frc3668.Stronghold;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -41,6 +42,7 @@ public class Robot extends IterativeRobot {
 	public static TurtleTail TurtleTail;
 	public static boolean isDriveReversed;
 
+	CameraServer server;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -55,7 +57,14 @@ public class Robot extends IterativeRobot {
 		autoChooser.addDefault("Low Bar Autonomous [With Score]", new CMDautoLowBar());
 		autoChooser.addObject("Portcillis Autonomous [No Score]", new CMDautoPortcullis());
 		autoChooser.addObject("All-Terrian Autonomous [No Score]", new CMDautoTerrian());
+		autoChooser.addObject("Spy Position Autonomous [With Score]", new CMDautoSpy());
+		autoChooser.addObject("Do nothing with a side of nothingness", new CMDdriveDelay(Settings.AUto_Millis2DoNothing));
 		SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
+		
+		 server = CameraServer.getInstance();
+	     server.setQuality(50);
+	     //the camera name (ex "cam0") can be found through the roborio web interface
+	     server.startAutomaticCapture("cam0");
 		
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
