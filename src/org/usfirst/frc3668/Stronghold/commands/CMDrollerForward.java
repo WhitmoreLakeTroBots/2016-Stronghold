@@ -8,7 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc3668.Stronghold.commands;
 
 import edu.wpi.first.wpilibj.Relay;
@@ -20,33 +19,45 @@ import org.usfirst.frc3668.Stronghold.Settings;
  *
  */
 public class CMDrollerForward extends Command {
-    public CMDrollerForward() {
-        requires(Robot.boulderRoller);
-    }
+	long _initialMillis;
+	long _commandedWaitmSec;
+	boolean _isFinished;
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public CMDrollerForward(long commandedWaitmSec) {
+		requires(Robot.boulderRoller);
+		_commandedWaitmSec = commandedWaitmSec;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		_initialMillis = System.currentTimeMillis();
+		_isFinished = false;
+	}
 
-        		Robot.boulderRoller.rollerRun(Settings.BR_forwardSpeed);
-        	
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		long MillisDelta = System.currentTimeMillis() - _initialMillis;
+		if (MillisDelta > _commandedWaitmSec) {
+			_isFinished = true;
+		}
+		Robot.boulderRoller.rollerRun(Settings.BR_forwardSpeed);
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return _isFinished;
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	Robot.boulderRoller.rollerRun(0);
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.boulderRoller.rollerRun(0);
+
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		Robot.boulderRoller.rollerRun(0);
+	}
 }

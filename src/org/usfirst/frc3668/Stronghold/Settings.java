@@ -99,6 +99,10 @@ public class Settings {
 	public final static double Auto_turnSlowDownBand = 10;
 	public final static double Auto_turnSlowSpeed = .4;
 	public final static long Auto_delayTimeMillis = 375;
+	public final static double Auto_InchesToStraighten = 30;
+	public final static double Auto_InchesToWall = 72;
+	public final static int Auto_Position2TurnHeading = 45;
+	public final static double Auto_Position2and4InchesToScore = 42;
 
 	// ***************
 	// Turtle Tail Settings
@@ -122,6 +126,7 @@ public class Settings {
 	//****************
 	public final static double BR_reverseSpeed = 0.45;
 	public final static double BR_forwardSpeed = -1;
+	public final static long BR_ejectMilliseconds = 2000;
 
 	
 	// ***************
@@ -133,6 +138,19 @@ public class Settings {
 	// Sonar Settings
 	//***************
 	
-	public final static double Sonar_Scale = 508/5; // Scale is max range over volts
-
+	public final static double Sonar_Scale = 2500/5; // Scale is max range over volts
+	
+	
+	
+	
+	
+	
+public enum autoCommand {
+	LowBar
+	,Terrain
+	,Portcullis
+	,Rockwall
+	,Spy
+	,DoNothingness
+}
 }

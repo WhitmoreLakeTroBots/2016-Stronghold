@@ -55,22 +55,25 @@ public class Robot extends IterativeRobot {
 		boulderRoller = new BoulderRoller();
 		TurtleTail = new TurtleTail();
 		autoPositionChooser = new SendableChooser();
-		autoPositionChooser.addObject("Position 5", new CMDautoPosition5_Score());
+		autoPositionChooser.addObject("Position 2", 2);
+		autoPositionChooser.addObject("Position 3", 3);
+		autoPositionChooser.addObject("Position 4", 4);
+		autoPositionChooser.addObject("Position 5", 5);
 		SmartDashboard.putData("Autonomous Position Chooser", autoPositionChooser);
 		
 		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Low Bar Autonomous [With Score]", new CMDautoLowBar());
-		autoChooser.addObject("Portcillis Autonomous [No Score]", new CMDautoPortcullis());
-		autoChooser.addObject("All-Terrian Autonomous [No Score]", new CMDautoTerrian());
-		autoChooser.addObject("Spy Position Autonomous [With Score]", new CMDautoSpy());
-		autoChooser.addObject("Do nothing with a side of nothingness", new CMDdriveDelay(Settings.AUto_Millis2DoNothing));
-		autoChooser.addObject("Read ultrasonic", new CMDdriveTillObject());
+		autoChooser.addDefault("Low Bar Autonomous [With Score]", Settings.autoCommand.LowBar);
+		autoChooser.addObject("Portcillis Autonomous [No Score]", Settings.autoCommand.Portcullis);
+		autoChooser.addObject("All-Terrian Autonomous [No Score]", Settings.autoCommand.Terrain);
+		autoChooser.addObject("Spy Position Autonomous [With Score]", Settings.autoCommand.Spy);
+		autoChooser.addObject("Do nothing with a side of nothingness", Settings.autoCommand.DoNothingness);
+		//autoChooser.addObject("Read ultrasonic", new CMDdriveTillObject());
 		SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
 		
 		 server = CameraServer.getInstance();
 	     server.setQuality(50);
 	     //the camera name (ex "cam0") can be found through the roborio web interface
-	     server.startAutomaticCapture("cam0");
+	   //  server.startAutomaticCapture("cam0");
 		
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
@@ -99,10 +102,28 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		// schedule the autonomous command (example)
-		autonomousCommand = (Command) autoChooser.getSelected();
+	
 		Robot.chassis.Shift(false);
 		Robot.TurtleTail.encoderReset();
+		
+		Settings.autoCommand selectedAutoCommand = (Settings.autoCommand) autoChooser.getSelected();
+		int selectedPosition = (int) autoPositionChooser.getSelected();
+		switch (selectedAutoCommand) {
+			case LowBar:
+				autonomousCommand = new CMDautoLowBar();
+			case Terrain:
+				autonomousCommand = new CMDautoTerrain(selectedPosition);
+			case Portcullis:
+				autonomousCommand = new CMDautoPortcullis();
+			case Rockwall:
+				autonomousCommand = new CMDautoTerrain(selectedPosition);
+			case Spy:
+				autonomousCommand = new CMDautoSpy();
+			case DoNothingness:
+				autonomousCommand = new CMDdriveDelay(Settings.AUto_Millis2DoNothing);
+		}
+		
+		
 		if (chassisTeleopCommand != null)
 			chassisTeleopCommand.cancel();
 		Robot.chassis.resetGyro();

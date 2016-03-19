@@ -1,20 +1,15 @@
 package org.usfirst.frc3668.Stronghold.commands;
 
-import org.usfirst.frc3668.Stronghold.Robot;
-import org.usfirst.frc3668.Stronghold.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class CMDdriveTillObject extends Command {
+public class CMDdriveBySonar extends Command {
 
-	private boolean _isFinished = false;
-	
-    public CMDdriveTillObject() {
-        // Use requires() here to declare subsystem dependencies
-         requires(Robot.chassis);
+    public CMDdriveBySonar(double DistanceFromWall, int CommandedHeading, double Speed) {
+        // Use reqdouble Distance, int CommandedHeading, double Speeduires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -23,12 +18,11 @@ public class CMDdriveTillObject extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println("Ultrasonic is reading: " + RobotMap.Sonar.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return _isFinished;
+        return false;
     }
 
     // Called once after isFinished returns true
