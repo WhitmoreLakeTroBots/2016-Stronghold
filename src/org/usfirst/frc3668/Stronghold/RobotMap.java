@@ -2,6 +2,7 @@
 package org.usfirst.frc3668.Stronghold;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -33,13 +34,14 @@ public class RobotMap {
     public static Encoder chassisEncoderChassisRight;
     public static Encoder turtleTailEncoder;
     public static AnalogGyro chassisGyro;
-    public static Relay boulderRollerRollerMotor;
+    public static CANTalon boulderRollerRollerMotor;
     public static DigitalInput boulderRollerRollerMotorSwitch;
     public static DigitalInput turtleTailLimitSwitchUP;
     public static DigitalInput turtleTailLimitSwitchDOWN;
     public static Servo chassisShifterRight;
     public static Servo chassisShifterLeft;
     public static SmartDashboard SmartDashboard;
+    public static AnalogPotentiometer Sonar;
 
 
     public static void init() {
@@ -85,7 +87,7 @@ public class RobotMap {
         LiveWindow.addSensor("Chassis", "Gyro", chassisGyro);
         chassisGyro.setSensitivity(Settings.GryoSensitivity);
         
-        boulderRollerRollerMotor = new Relay(Settings.Relay_RollerPort);
+        boulderRollerRollerMotor = new CANTalon(Settings.CAN_BoulderRollerMotorID);
         LiveWindow.addActuator("BoulderRoller", "RollerMotor", boulderRollerRollerMotor);
         
         boulderRollerRollerMotorSwitch = new DigitalInput(Settings.DIO_rollerLimitSwitch);
@@ -102,5 +104,6 @@ public class RobotMap {
         
         Accel = new BuiltInAccelerometer(Accelerometer.Range.k4G);
         
+        Sonar = new AnalogPotentiometer(Settings.Analog_SonarPort, Settings.Sonar_Scale);
     }
 }

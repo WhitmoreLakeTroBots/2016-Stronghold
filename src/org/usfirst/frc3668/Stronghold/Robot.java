@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
 	//Command turtleTailTeleop;
 	
 	SendableChooser autoChooser;
+	public static SendableChooser autoPositionChooser;
 	
 	public static OI oi;
 	public static Chassis chassis;
@@ -53,12 +54,17 @@ public class Robot extends IterativeRobot {
 		Robot.chassis.initGyro();
 		boulderRoller = new BoulderRoller();
 		TurtleTail = new TurtleTail();
+		autoPositionChooser = new SendableChooser();
+		autoPositionChooser.addObject("Position 5", new CMDautoPosition5_Score());
+		SmartDashboard.putData("Autonomous Position Chooser", autoPositionChooser);
+		
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Low Bar Autonomous [With Score]", new CMDautoLowBar());
 		autoChooser.addObject("Portcillis Autonomous [No Score]", new CMDautoPortcullis());
 		autoChooser.addObject("All-Terrian Autonomous [No Score]", new CMDautoTerrian());
 		autoChooser.addObject("Spy Position Autonomous [With Score]", new CMDautoSpy());
 		autoChooser.addObject("Do nothing with a side of nothingness", new CMDdriveDelay(Settings.AUto_Millis2DoNothing));
+		autoChooser.addObject("Read ultrasonic", new CMDdriveTillObject());
 		SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
 		
 		 server = CameraServer.getInstance();

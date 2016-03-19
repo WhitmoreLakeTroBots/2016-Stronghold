@@ -14,6 +14,7 @@ package org.usfirst.frc3668.Stronghold.commands;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3668.Stronghold.Robot;
+import org.usfirst.frc3668.Stronghold.Settings;
 
 /**
  *
@@ -31,7 +32,7 @@ public class CMDrollerBackward extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//if(Robot.boulderRoller.getRollerSwitchState()){
-    	Robot.boulderRoller.rollerRun(Relay.Value.kReverse);
+    	Robot.boulderRoller.rollerRun(Settings.BR_reverseSpeed);
     	//}
     //	else{
     	//	Robot.boulderRoller.rollerRun(Relay.Value.kOff);
@@ -50,6 +51,6 @@ public class CMDrollerBackward extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.boulderRoller.rollerRun(Relay.Value.kOff);
+    	Robot.boulderRoller.rollerRun(0);
     }
 }

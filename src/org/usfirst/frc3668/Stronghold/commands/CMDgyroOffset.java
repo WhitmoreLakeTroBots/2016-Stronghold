@@ -1,50 +1,35 @@
 package org.usfirst.frc3668.Stronghold.commands;
 
 import org.usfirst.frc3668.Stronghold.Robot;
-import org.usfirst.frc3668.Stronghold.Settings;
-import org.usfirst.frc3668.Stronghold.subsystems.BoulderRoller;
 
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
-import java.util.Timer;
 
 /**
  *
  */
-public class CMDautoRoller extends Command {
-	long _TargetNanoSeconds;
-	long _startTime;
-	boolean _isFinished;
+public class CMDgyroOffset extends Command {
 	
-    public CMDautoRoller(int SecondsToRun) {
-    	_TargetNanoSeconds = (long)SecondsToRun * 1000000000;
-    
+	private double _Offset;
+	
+    public CMDgyroOffset(double Offset) {
         // Use requires() here to declare subsystem dependencies
-         requires(Robot.boulderRoller);
+        // eg. requires(chassis);
+    	_Offset = Offset;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	_startTime = System.nanoTime();
-    	System.out.println("CMDautoRoller");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (System.nanoTime() - _startTime < _TargetNanoSeconds){
-    	Robot.boulderRoller.rollerRun(Settings.BR_reverseSpeed);
-    	_isFinished = false;
-    		
-    	}
-    	else {
-    		Robot.boulderRoller.rollerRun(0);
-    		_isFinished = true;
-    	}
+    	Robot.chassis.setGyroOffset(_Offset);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return _isFinished;
+        return true;
     }
 
     // Called once after isFinished returns true

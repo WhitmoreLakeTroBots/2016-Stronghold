@@ -12,7 +12,7 @@ public class Settings {
 	// Relay Ports
 	// *************
 
-	public final static int Relay_RollerPort = 0;
+//	public final static int Relay_RollerPort = 0;
 
 	// ******************
 	// DIO Ports Settings
@@ -31,10 +31,13 @@ public class Settings {
 	// ********************
 	// Analog Settings
 	// ********************
-
+	
+	public final static int Analog_SonarPort = 1;
+	
 	public final static int Analog_GryoPort = 0;
 	public final static double GryoSensitivity = 0.007;
 	public final static double Heading_Kp = 25;
+	public final static double GyroInverseOffset = 180;
 
 	// ********************
 	// Drive Train Settings
@@ -45,6 +48,7 @@ public class Settings {
 	public final static int CAN_leftMotor1ID = 3;
 	public final static int CAN_leftMotor2ID = 4;
 	public final static int CAN_TurtleTailMotorID = 5; 
+	public final static int CAN_BoulderRollerMotorID = 6;
 	public final static double ShifterAngleLeftLowSpeed = 117;
 	public final static double ShifterAngleLeftHighSpeed = 35;
 	public final static double ShifterAngleRightLowSpeed = 145;
@@ -112,11 +116,23 @@ public class Settings {
 	public final static double TT_upPosition = 1;
 	public final static double TT_scaleFactor = 0.5;
 	
+	
+	//****************
+	// Boulder Roller
+	//****************
+	public final static double BR_reverseSpeed = 0.45;
+	public final static double BR_forwardSpeed = -1;
+
+	
 	// ***************
 	// Other Settings <3
 	// ***************
 	public static final double universalSpeedScaleFactor = 2;
 
+	//***************
+	// Sonar Settings
+	//***************
 	
+	public final static double Sonar_Scale = 508/5; // Scale is max range over volts
 
 }

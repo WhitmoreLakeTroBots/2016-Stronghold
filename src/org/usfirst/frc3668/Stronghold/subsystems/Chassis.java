@@ -33,7 +33,7 @@ public class Chassis extends Subsystem {
 	private final AnalogGyro gyro = RobotMap.chassisGyro;
 	private final Servo ShifterRight = RobotMap.chassisShifterRight;
 	private final Servo ShifterLeft = RobotMap.chassisShifterLeft;
-
+	private double gyroOffset = 0;
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	
@@ -56,12 +56,17 @@ public class Chassis extends Subsystem {
 		System.out.println("initGyro");
 		// System.out.println(Settings.EncoderDistancePerPulse);
 	}
+	
+	public void setGyroOffset(double OffsetVal){
+		gyroOffset = OffsetVal;
+	}
 
 	public void resetGyro() {
 		gyro.reset();
 	}
 
 	public double getCurrentHeading() {
+		
 		// double Heading = (gyro.getAngle() % 360.0) * 360.0;
 		double divResult = gyro.getAngle() / 360.0;
 		double gyroMod = divResult % 1;
@@ -72,12 +77,17 @@ public class Chassis extends Subsystem {
 		if (GMheading < 0) {
 			GMheading = GMheading + 360;
 		}
+		
+		double gyroRaw = GMheading;
+		double gyroFinished;
+		if(gyroRaw >= 180){
+			gyroFinished = gyroRaw + gyroOffset;
+		}
+		else{
+			gyroFinished = gyroRaw - gyroOffset;
+		}
 
-		return GMheading;
-	}
-
-	public double getGyroAngle() {
-		return gyro.getAngle();
+		return gyroFinished;
 	}
 
 	public void Shift(boolean Fast) {

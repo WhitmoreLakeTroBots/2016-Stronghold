@@ -1,45 +1,29 @@
 package org.usfirst.frc3668.Stronghold.commands;
 
 import org.usfirst.frc3668.Stronghold.Robot;
-import org.usfirst.frc3668.Stronghold.Settings;
-import org.usfirst.frc3668.Stronghold.subsystems.BoulderRoller;
+import org.usfirst.frc3668.Stronghold.RobotMap;
 
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
-import java.util.Timer;
 
 /**
  *
  */
-public class CMDautoRoller extends Command {
-	long _TargetNanoSeconds;
-	long _startTime;
-	boolean _isFinished;
+public class CMDdriveTillObject extends Command {
+
+	private boolean _isFinished = false;
 	
-    public CMDautoRoller(int SecondsToRun) {
-    	_TargetNanoSeconds = (long)SecondsToRun * 1000000000;
-    
+    public CMDdriveTillObject() {
         // Use requires() here to declare subsystem dependencies
-         requires(Robot.boulderRoller);
+         requires(Robot.chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	_startTime = System.nanoTime();
-    	System.out.println("CMDautoRoller");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (System.nanoTime() - _startTime < _TargetNanoSeconds){
-    	Robot.boulderRoller.rollerRun(Settings.BR_reverseSpeed);
-    	_isFinished = false;
-    		
-    	}
-    	else {
-    		Robot.boulderRoller.rollerRun(0);
-    		_isFinished = true;
-    	}
+    	System.out.println("Ultasonic is reading: " + RobotMap.Sonar.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()
