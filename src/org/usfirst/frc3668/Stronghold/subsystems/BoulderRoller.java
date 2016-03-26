@@ -56,7 +56,7 @@ public class BoulderRoller extends Subsystem {
     }
     
     public void rollerRun(double runState){
-    	if(Robot.boulderRoller.getRollerSwitchState() && Math.signum(runState) == -1){
+    	if(Robot.boulderRoller.getRollerSwitchState() && Math.signum(runState) == 1){
     		rollerMotor.set(0);
         	}
         	else{

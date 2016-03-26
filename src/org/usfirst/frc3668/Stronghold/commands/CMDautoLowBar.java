@@ -38,9 +38,10 @@ public class CMDautoLowBar extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 		addSequential(new CMDdriveForward(Settings.Auto_InchesFromOuterworksLowBar, 0, Settings.Auto_DriveSpeed));
-		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+		//addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+		addSequential(new CMDdriveForward(Settings.Auto_LowbarDriveForward2, Settings.Auto_LowbarAngleHeading1, Settings.Auto_DriveSpeed));
 		addSequential(new CMDturn(Settings.Auto_TurnHeadingLowBar));
-		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+		//addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
 		addSequential(new CMDdriveForward(Settings.Auto_InchesToTowerLowBar, Settings.Auto_TurnHeadingLowBar, Settings.Auto_DriveSpeed));
 		addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
 

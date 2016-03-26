@@ -20,7 +20,7 @@ public class CMDdriveDelay extends Command {
     protected void initialize() {
     	_initialMillis = System.currentTimeMillis();
     	_isFinished = false;
-    	System.out.println("starting Delay");
+    	System.out.println("starting Delay 1");
     }
 
     // Called repeatedly when this Command is scheduled to run

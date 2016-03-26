@@ -77,7 +77,9 @@ public class Settings {
 	public final static double Auto_SpyDistance2Turn = 87;
 	public final static double Auto_SpyDistance2goal = 65;
 	public final static int Auto_SpyTurnHeading = 320;
-	public final static double Auto_InchesFromOuterworksLowBar = 168.75;
+	public final static double Auto_InchesFromOuterworksLowBar = 132;
+	public final static double Auto_LowbarDriveForward2 = 60;
+	public final static int Auto_LowbarAngleHeading1 = 10;
 	public final static double Auto_InchesToDefenseTerrian = 70;
 	public final static double Auto_InchesToCrossDefenseTerrian = 84;
 	public final static double Auto_InchesAfterDefenseTerrian = 36;
@@ -86,7 +88,7 @@ public class Settings {
 	public final static double Auto_InchesAfterPortcullis = -144;
 	public final static double Auto_PortcullisTurnHeadingEnd = 180;
 	public final static int Auto_TurnHeadingLowBar = 50;
-	public final static int Auto_InchesToTowerLowBar = 137;
+	public final static int Auto_InchesToTowerLowBar = 89;
 	public final static int Auto_RunRollerMotorSeconds = 2;
 	public final static double Auto_DriveSpeed = 0.85;
 	public final static double Auto_TerrianNormalSpeed = Auto_DriveSpeed;
@@ -128,8 +130,8 @@ public class Settings {
 	//****************
 	// Boulder Roller
 	//****************
-	public final static double BR_reverseSpeed = 0.45;
-	public final static double BR_forwardSpeed = -1;
+	public final static double BR_reverseSpeed = -1;
+	public final static double BR_forwardSpeed = 0.6;
 	public final static long BR_ejectMilliseconds = 2000;
 
 	

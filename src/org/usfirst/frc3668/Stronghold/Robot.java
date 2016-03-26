@@ -112,18 +112,27 @@ public class Robot extends IterativeRobot {
 		switch (selectedAutoCommand) {
 			case LowBar:
 				autonomousCommand = new CMDautoLowBar();
+				break;
 			case Terrain:
 				autonomousCommand = new CMDautoTerrain(selectedPosition);
+				break;
 			case Portcullis:
 				autonomousCommand = new CMDautoPortcullis(selectedPosition);
+break;
 			case Rockwall:
 				autonomousCommand = new CMDautoRockwall(selectedPosition);
+		break;		
 			case Spy:
 				autonomousCommand = new CMDautoSpy();
+				break;
 			case DoNothingness:
 				autonomousCommand = new CMDdriveDelay(Settings.AUto_Millis2DoNothing);
+				break;
+				
+				
 		}
 		
+		System.out.println("AutoCommand: " + selectedAutoCommand);
 		
 		if (chassisTeleopCommand != null)
 			chassisTeleopCommand.cancel();

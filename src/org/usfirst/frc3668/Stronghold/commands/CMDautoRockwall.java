@@ -14,10 +14,10 @@ public class CMDautoRockwall extends CommandGroup {
 				new CMDdriveForward(Settings.Auto_InchesToDefenseTerrian + Settings.Auto_InchesToCrossDefenseTerrian, 0,
 						Settings.Auto_TerrianFastSpeed));
 
-		addSequential(new CMDdriveForward(Settings.Auto_Inches2BackRockwall, 0, Settings.Auto_TerrianFastSpeed));
+		addSequential(new CMDdriveBackward(Settings.Auto_Inches2BackRockwall, 0, Settings.Auto_TerrianFastSpeed));
 		addSequential(new CMDdriveForward(Settings.Auto_Inches2GoForward, 0, Settings.Auto_TerrianFastSpeed));
 
-		addSequential(new CMDdriveForward(Settings.Auto_Inches2BackRockwall, 0, Settings.Auto_TerrianFastSpeed));
+		addSequential(new CMDdriveBackward(Settings.Auto_Inches2BackRockwall, 0, Settings.Auto_TerrianFastSpeed));
 		addSequential(new CMDdriveForward(Settings.Auto_Inches2GoForward, 0, Settings.Auto_TerrianFastSpeed));
 
 		addSequential(new CMDdriveForward(Settings.Auto_InchesToStraighten, 0, Settings.Auto_DriveSpeed));

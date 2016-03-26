@@ -64,7 +64,7 @@ public class CMDdriveForward extends Command {
 			// System.out.println("********************");
 		}
 
-		// System.out.println(Robot.chassis.getEncoderValue());
+		System.out.println(Robot.chassis.getEncoderValue());
 
 	}
 

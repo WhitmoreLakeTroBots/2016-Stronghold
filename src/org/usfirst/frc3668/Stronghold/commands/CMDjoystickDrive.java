@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc3668.Stronghold.OI;
 import org.usfirst.frc3668.Stronghold.Robot;
+import org.usfirst.frc3668.Stronghold.RobotMap;
 
 /**
  *
@@ -32,6 +33,7 @@ public class CMDjoystickDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.chassis.drive(Robot.oi.getJoyDrive());
+    	System.out.println(RobotMap.Sonar.get() +"  Sonar Distance <3");
     }
 
     // Make this return true when this Command no longer needs to run execute()

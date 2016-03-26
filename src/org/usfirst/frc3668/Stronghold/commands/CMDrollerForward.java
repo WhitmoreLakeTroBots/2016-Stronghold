@@ -38,7 +38,7 @@ public class CMDrollerForward extends Command {
 	protected void execute() {
 		long MillisDelta = System.currentTimeMillis() - _initialMillis;
 		if (MillisDelta > _commandedWaitmSec) {
-			_isFinished = true;
+			Robot.boulderRoller.rollerRun(0);
 		}
 		Robot.boulderRoller.rollerRun(Settings.BR_forwardSpeed);
 
