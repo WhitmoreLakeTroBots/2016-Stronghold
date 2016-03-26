@@ -7,13 +7,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CMDautoTerrain extends CommandGroup {
+public class CMDautoRockwall extends CommandGroup {
 
-	public CMDautoTerrain(int startingPosition) {
-
+	public CMDautoRockwall(int startingPosition) {
 		addSequential(
-				new CMDdriveForward(Settings.Auto_InchesToDefenseTerrian + Settings.Auto_InchesToCrossDefenseTerrian
-						+ Settings.Auto_InchesAfterDefenseTerrian, 0, Settings.Auto_TerrianFastSpeed));
+				new CMDdriveForward(Settings.Auto_InchesToDefenseTerrian + Settings.Auto_InchesToCrossDefenseTerrian, 0,
+						Settings.Auto_TerrianFastSpeed));
+
+		addSequential(new CMDdriveForward(Settings.Auto_Inches2BackRockwall, 0, Settings.Auto_TerrianFastSpeed));
+		addSequential(new CMDdriveForward(Settings.Auto_Inches2GoForward, 0, Settings.Auto_TerrianFastSpeed));
+
+		addSequential(new CMDdriveForward(Settings.Auto_Inches2BackRockwall, 0, Settings.Auto_TerrianFastSpeed));
+		addSequential(new CMDdriveForward(Settings.Auto_Inches2GoForward, 0, Settings.Auto_TerrianFastSpeed));
+
 		addSequential(new CMDdriveForward(Settings.Auto_InchesToStraighten, 0, Settings.Auto_DriveSpeed));
 
 		if (startingPosition == 2) {

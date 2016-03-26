@@ -81,10 +81,10 @@ public class Chassis extends Subsystem {
 		double gyroRaw = GMheading;
 		double gyroFinished;
 		if(gyroRaw >= 180){
-			gyroFinished = gyroRaw + gyroOffset;
+			gyroFinished = gyroRaw - gyroOffset;
 		}
 		else{
-			gyroFinished = gyroRaw - gyroOffset;
+			gyroFinished = gyroRaw + gyroOffset;
 		}
 
 		return gyroFinished;
@@ -161,5 +161,9 @@ public class Chassis extends Subsystem {
 
 	public double getEncoderValue() {
 		return (encoderChassisLeft.getDistance() + encoderChassisRight.getDistance()) / 2;
+	}
+	
+	public double getSonarValue(){
+		return RobotMap.Sonar.get();
 	}
 }

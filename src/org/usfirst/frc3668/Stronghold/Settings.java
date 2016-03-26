@@ -5,6 +5,7 @@ public class Settings {
 	// ************
 	// PWM Ports
 	// ************
+	public final static int PWMPorts_ScalingMotorController = 7;
 	public final static int PWMPorts_chassisShifterRight = 8;
 	public final static int PWMPorts_chassisShifterLeft = 9;
 
@@ -75,11 +76,11 @@ public class Settings {
 	public final static long AUto_Millis2DoNothing = 16000;
 	public final static double Auto_SpyDistance2Turn = 87;
 	public final static double Auto_SpyDistance2goal = 65;
-	public final static int Auto_SpyTurnHeading = 219;
+	public final static int Auto_SpyTurnHeading = 320;
 	public final static double Auto_InchesFromOuterworksLowBar = 168.75;
 	public final static double Auto_InchesToDefenseTerrian = 70;
 	public final static double Auto_InchesToCrossDefenseTerrian = 84;
-	public final static double Auto_InchesAfterDefenseTerrian = 66;
+	public final static double Auto_InchesAfterDefenseTerrian = 36;
 	public final static double Auto_InchesToPortcullis = -36;
 	public final static double Auto_InchesUnderPortcullis = -24;
 	public final static double Auto_InchesAfterPortcullis = -144;
@@ -94,15 +95,18 @@ public class Settings {
 	public final static double Auto_DriveSlowSpeedFloor = .4;
 	public final static double Auto_DriveSlowSpeedFactor = 0.6;
 	public final static double Auto_DriveDeadBand = 5;
-	public final static double Auto_SlowDownDistance = 12;           
+	public final static double Auto_SlowDownDistance = 12; //inches           
 	public final static double Auto_turnDeadband = 1;                    
 	public final static double Auto_turnSlowDownBand = 10;
 	public final static double Auto_turnSlowSpeed = .4;
 	public final static long Auto_delayTimeMillis = 375;
 	public final static double Auto_InchesToStraighten = 30;
 	public final static double Auto_InchesToWall = 72;
-	public final static int Auto_Position2TurnHeading = 45;
-	public final static double Auto_Position2and4InchesToScore = 42;
+	public final static int Auto_Position2TurnHeading = Auto_TurnHeadingLowBar;
+	public final static double Auto_Position2and5InchesToScore = 36;
+	public final static int Auto_Position5TurnHeading = 310;
+	public final static double Auto_Inches2BackRockwall = 12;
+	public final static double Auto_Inches2GoForward = 36;
 
 	// ***************
 	// Turtle Tail Settings

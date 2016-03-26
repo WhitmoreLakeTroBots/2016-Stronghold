@@ -41,7 +41,7 @@ public class CMDautoLowBar extends CommandGroup {
 		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
 		addSequential(new CMDturn(Settings.Auto_TurnHeadingLowBar));
 		addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
-		addSequential(new CMDdriveForward(Settings.Auto_InchesToTowerLowBar, 45, Settings.Auto_DriveSpeed));
+		addSequential(new CMDdriveForward(Settings.Auto_InchesToTowerLowBar, Settings.Auto_TurnHeadingLowBar, Settings.Auto_DriveSpeed));
 		addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
 
 	}

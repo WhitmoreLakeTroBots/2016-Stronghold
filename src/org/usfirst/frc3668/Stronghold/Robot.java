@@ -62,16 +62,17 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Position Chooser", autoPositionChooser);
 		
 		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Low Bar Autonomous [With Score]", Settings.autoCommand.LowBar);
-		autoChooser.addObject("Portcillis Autonomous [No Score]", Settings.autoCommand.Portcullis);
-		autoChooser.addObject("All-Terrian Autonomous [No Score]", Settings.autoCommand.Terrain);
-		autoChooser.addObject("Spy Position Autonomous [With Score]", Settings.autoCommand.Spy);
+		autoChooser.addDefault("Low Bar Autonomous", Settings.autoCommand.LowBar);
+		autoChooser.addObject("Portcullis Autonomous", Settings.autoCommand.Portcullis);
+		autoChooser.addObject("All-Terrain Autonomous", Settings.autoCommand.Terrain);
+		autoChooser.addObject("Rockwall Autonomous", Settings.autoCommand.Rockwall);
+		autoChooser.addObject("Spy Position Autonomous", Settings.autoCommand.Spy);
 		autoChooser.addObject("Do nothing with a side of nothingness", Settings.autoCommand.DoNothingness);
 		//autoChooser.addObject("Read ultrasonic", new CMDdriveTillObject());
 		SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
 		
-		 server = CameraServer.getInstance();
-	     server.setQuality(50);
+		 //server = CameraServer.getInstance();
+	     //server.setQuality(50);
 	     //the camera name (ex "cam0") can be found through the roborio web interface
 	   //  server.startAutomaticCapture("cam0");
 		
@@ -114,9 +115,9 @@ public class Robot extends IterativeRobot {
 			case Terrain:
 				autonomousCommand = new CMDautoTerrain(selectedPosition);
 			case Portcullis:
-				autonomousCommand = new CMDautoPortcullis();
+				autonomousCommand = new CMDautoPortcullis(selectedPosition);
 			case Rockwall:
-				autonomousCommand = new CMDautoTerrain(selectedPosition);
+				autonomousCommand = new CMDautoRockwall(selectedPosition);
 			case Spy:
 				autonomousCommand = new CMDautoSpy();
 			case DoNothingness:

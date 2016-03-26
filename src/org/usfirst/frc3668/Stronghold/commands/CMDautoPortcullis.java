@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class CMDautoPortcullis extends CommandGroup {
     
-    public  CMDautoPortcullis() {
+    public  CMDautoPortcullis( int startingPosition) {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -25,10 +25,6 @@ public class CMDautoPortcullis extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	CommandGroup Score = new CommandGroup();
-    	if(Robot.autoPositionChooser.getSelected() != null){
-    	Score.addSequential((Command) Robot.autoPositionChooser.getSelected());
-    	}
     	
     	CommandGroup StartTT = new CommandGroup();
     	StartTT.addSequential(new CMDCalibrateTurtleTail());
@@ -45,8 +41,23 @@ public class CMDautoPortcullis extends CommandGroup {
     	addSequential(new CMDdriveForward(Settings.Auto_InchesUnderPortcullis,0,Settings.Auto_DriveSpeed)); //driving under Portcullis
     	addSequential(new CMDdriveForward(Settings.Auto_InchesAfterPortcullis,0,Settings.Auto_DriveSpeed));
     	addSequential(new CMDturn(Settings.Auto_PortcullisTurnHeadingEnd));
-    	addSequential(new CMDgyroOffset(Settings.GyroInverseOffset));
+    	addSequential(new CMDsetGyroOffset(Settings.GyroInverseOffset));
     	//System.out.println("Auto is done, turn executed");
-    	addSequential(Score);
+    	if (startingPosition == 2) {
+			addSequential(new CMDdriveBySonar(Settings.Auto_InchesToWall, 0, Settings.Auto_DriveSpeed));
+			addSequential(new CMDturn(Settings.Auto_Position2TurnHeading));
+			addSequential(new CMDdriveForward(Settings.Auto_Position2and5InchesToScore,
+					Settings.Auto_Position2TurnHeading, Settings.Auto_DriveSpeed));
+			addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
+		}
+
+		if (startingPosition == 5) {
+			addSequential(new CMDdriveBySonar(Settings.Auto_InchesToWall, 0, Settings.Auto_DriveSpeed));
+			addSequential(new CMDturn(Settings.Auto_Position5TurnHeading));
+			addSequential(new CMDdriveForward(Settings.Auto_Position2and5InchesToScore,
+					Settings.Auto_Position5TurnHeading, Settings.Auto_DriveSpeed));
+			addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
+		}
+    	
     }
 }

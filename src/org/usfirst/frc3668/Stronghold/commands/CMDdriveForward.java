@@ -40,22 +40,22 @@ public class CMDdriveForward extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double X = Robot.chassis.getAccelX();
-		// double Y = Robot.chassis.getAccelY();
-		if (Math.abs(X) > 0.1) {
-			System.out.println(X);
-		}
+//		double X = Robot.chassis.getAccelX();
+//		// double Y = Robot.chassis.getAccelY();
+//		if (Math.abs(X) > 0.1) {
+//			System.out.println(X);
+//		}
 		double distanceDelta = DistanceDelta();
 
-		double joyX = RobotCaluator.Heading2Direction(_CommandedHeading, Robot.chassis.getCurrentHeading());
+		double headingX = RobotCaluator.Heading2Direction(_CommandedHeading, Robot.chassis.getCurrentHeading());
 		// System.out.println("JoyX = "+ joyX);
 		if ((Math.abs(distanceDelta) > 0) && (Math.abs(distanceDelta) > Settings.Auto_DriveDeadBand)) {
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {
 				Robot.chassis.drive((Math.signum(distanceDelta)
 						* Math.max(_fastSpeed * Settings.Auto_DriveSlowSpeedFactor, Settings.Auto_DriveSlowSpeedFloor)),
-						joyX);
+						headingX);
 			} else {
-				Robot.chassis.drive((Math.signum(distanceDelta) * _fastSpeed), joyX);
+				Robot.chassis.drive((Math.signum(distanceDelta) * _fastSpeed), headingX);
 				// System.out.println("this is normal speed: " + distanceDelta);
 			}
 		} else {
@@ -75,6 +75,7 @@ public class CMDdriveForward extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		Robot.chassis.drive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same
