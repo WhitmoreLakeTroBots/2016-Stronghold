@@ -49,7 +49,7 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 
-
+	
     public Joystick joyDrive;
     public JoystickButton InvertFront;
     public JoystickButton rollerForward;
@@ -61,8 +61,10 @@ public class OI {
     public JoystickButton turtleCal;
     public JoystickButton turtleTrigger;
     public JoystickButton AccelReadOut;
-
-
+    public JoystickButton joySafety;
+    public JoystickButton joyScale;
+    public JoystickButton joyRelease;
+    
     public OI() {
 
         joyArticulator = new Joystick(1);
@@ -87,13 +89,18 @@ public class OI {
         InvertFront = new JoystickButton(joyDrive, Settings.Button_joyInvertFront);
         InvertFront.whenPressed(new CMDinvertDrive());
         
+        joySafety = new JoystickButton(joyArticulator, Settings.Button_joySafety);
+        
+        joyScale = new JoystickButton(joyArticulator, Settings.Button_joySCALE);
+        joyScale.whileHeld(new CMDscale());
 
-
+        joyRelease = new JoystickButton(joyArticulator, Settings.Button_joyReleaseScaler);
+        joyRelease.whileHeld(new CMDreleaseScaler());
         // SmartDashboard Buttons
         //SmartDashboard.putData("Drive Forward To Outerworks!", new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
        // SmartDashboard.putData("Drive Forward To Tower", new CMDdriveForward(Settings.Auto_InchesToTower));
-          SmartDashboard.putData("Calibrate Turtle tail!", new CMDCalibrateTurtleTail());
-          SmartDashboard.putBoolean("Turtle Tail State: ", Robot.TurtleTail.isUP());
+//          SmartDashboard.putData("Calibrate Turtle tail!", new CMDCalibrateTurtleTail());
+//          SmartDashboard.putBoolean("Turtle Tail State: ", Robot.TurtleTail.isUP());
     }
 
     public Joystick getJoyDrive() {

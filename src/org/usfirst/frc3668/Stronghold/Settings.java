@@ -5,7 +5,8 @@ public class Settings {
 	// ************
 	// PWM Ports
 	// ************
-	public final static int PWMPorts_ScalingMotorController = 7;
+	public final static int PWMPorts_scalingServo = 6;
+	public final static int PWMPorts_ScalingMotor = 7;
 	public final static int PWMPorts_chassisShifterRight = 8;
 	public final static int PWMPorts_chassisShifterLeft = 9;
 
@@ -61,6 +62,9 @@ public class Settings {
 	// *****************
 	// Joystick Settings
 	// *****************
+	public final static int Button_joyReleaseScaler = 10;
+	public final static int Button_joySCALE = 12;
+	public final static int Button_joySafety = 2;
 	public final static int Button_joyTurbo = 8;
 	public final static int Button_turtleTrigger = 1;
 	public final static int Button_joyInvertFront = 3;
@@ -78,8 +82,8 @@ public class Settings {
 	public final static double Auto_SpyDistance2goal = 65;
 	public final static int Auto_SpyTurnHeading = 320;
 	public final static double Auto_InchesFromOuterworksLowBar = 132;
-	public final static double Auto_LowbarDriveForward2 = 60;
-	public final static int Auto_LowbarAngleHeading1 = 10;
+	public final static double Auto_LowbarDriveForward2 = 72;
+	public final static int Auto_LowbarAngleHeading1 = 15;
 	public final static double Auto_InchesToDefenseTerrian = 70;
 	public final static double Auto_InchesToCrossDefenseTerrian = 84;
 	public final static double Auto_InchesAfterDefenseTerrian = 36;
@@ -87,7 +91,7 @@ public class Settings {
 	public final static double Auto_InchesUnderPortcullis = -24;
 	public final static double Auto_InchesAfterPortcullis = -144;
 	public final static double Auto_PortcullisTurnHeadingEnd = 180;
-	public final static int Auto_TurnHeadingLowBar = 50;
+	public final static int Auto_TurnHeadingLowBar = 58;
 	public final static int Auto_InchesToTowerLowBar = 89;
 	public final static int Auto_RunRollerMotorSeconds = 2;
 	public final static double Auto_DriveSpeed = 0.85;
@@ -103,10 +107,10 @@ public class Settings {
 	public final static double Auto_turnSlowSpeed = .4;
 	public final static long Auto_delayTimeMillis = 375;
 	public final static double Auto_InchesToStraighten = 30;
-	public final static double Auto_InchesToWall = 72;
+	public final static double Auto_InchesToWall = 38;
 	public final static int Auto_Position2TurnHeading = Auto_TurnHeadingLowBar;
 	public final static double Auto_Position2and5InchesToScore = 36;
-	public final static int Auto_Position5TurnHeading = 310;
+	public final static int Auto_Position5TurnHeading = 315;
 	public final static double Auto_Inches2BackRockwall = 12;
 	public final static double Auto_Inches2GoForward = 36;
 
@@ -135,6 +139,13 @@ public class Settings {
 	public final static long BR_ejectMilliseconds = 2000;
 
 	
+	//***************
+	//Scaler Settings
+	//***************
+	
+	public final static int SL_ServoDisenaged = 125;
+	public final static int SL_ServoEngaged = 90;
+	public final static double SL_MotorSpeed = 1;
 	// ***************
 	// Other Settings <3
 	// ***************

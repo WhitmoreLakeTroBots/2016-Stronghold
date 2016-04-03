@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Talon;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -29,6 +30,7 @@ public class RobotMap {
     public static CANTalon chassisMotorChassisLeft1;
     public static CANTalon chassisMotorChassisLeft2;
     public static CANTalon turtleTailMotor;
+    public static Talon ScalingMotor;
     public static RobotDrive chassisRobotDrive41;
     public static Encoder chassisEncoderChassisLeft;
     public static Encoder chassisEncoderChassisRight;
@@ -40,6 +42,7 @@ public class RobotMap {
     public static DigitalInput turtleTailLimitSwitchDOWN;
     public static Servo chassisShifterRight;
     public static Servo chassisShifterLeft;
+    public static Servo scalerServo;
     public static SmartDashboard SmartDashboard;
     public static AnalogPotentiometer Sonar;
 
@@ -59,6 +62,9 @@ public class RobotMap {
         
         turtleTailMotor = new CANTalon(Settings.CAN_TurtleTailMotorID);
         LiveWindow.addActuator("Turtle Tail", "Turtle Tail Motor", turtleTailMotor);
+        
+        ScalingMotor = new Talon(Settings.PWMPorts_ScalingMotor);
+        LiveWindow.addActuator("Scaler", "Scaling Motor", ScalingMotor);
         
         chassisRobotDrive41 = new RobotDrive(chassisMotorChassisLeft1, chassisMotorChassisLeft2,
               chassisMotorChassisRight1, chassisMotorChassisRight2);
@@ -101,6 +107,8 @@ public class RobotMap {
         
         chassisShifterRight = new Servo(Settings.PWMPorts_chassisShifterRight);
         chassisShifterLeft = new Servo(Settings.PWMPorts_chassisShifterLeft);
+        
+        scalerServo = new Servo(Settings.PWMPorts_scalingServo);
         
         Accel = new BuiltInAccelerometer(Accelerometer.Range.k4G);
         

@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	
 	SendableChooser autoChooser;
 	public static SendableChooser autoPositionChooser;
-	
+	public static Scaler Scaler;
 	public static OI oi;
 	public static Chassis chassis;
 	public static BoulderRoller boulderRoller;
@@ -54,6 +54,7 @@ public class Robot extends IterativeRobot {
 		Robot.chassis.initGyro();
 		boulderRoller = new BoulderRoller();
 		TurtleTail = new TurtleTail();
+		Scaler = new Scaler();
 		autoPositionChooser = new SendableChooser();
 		autoPositionChooser.addObject("Position 2", 2);
 		autoPositionChooser.addObject("Position 3", 3);
@@ -71,10 +72,10 @@ public class Robot extends IterativeRobot {
 		//autoChooser.addObject("Read ultrasonic", new CMDdriveTillObject());
 		SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
 		
-		 //server = CameraServer.getInstance();
-	     //server.setQuality(50);
+		 server = CameraServer.getInstance();
+	     server.setQuality(50);
 	     //the camera name (ex "cam0") can be found through the roborio web interface
-	   //  server.startAutomaticCapture("cam0");
+	     server.startAutomaticCapture("cam0");
 		
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
@@ -106,6 +107,7 @@ public class Robot extends IterativeRobot {
 	
 		Robot.chassis.Shift(false);
 		Robot.TurtleTail.encoderReset();
+		Robot.Scaler.engageServo();
 		
 		Settings.autoCommand selectedAutoCommand = (Settings.autoCommand) autoChooser.getSelected();
 		int selectedPosition = (int) autoPositionChooser.getSelected();
@@ -156,7 +158,10 @@ break;
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		
+		Robot.Scaler.engageServo();
 		Robot.chassis.Shift(false);
+		
 		if (chassisTeleopCommand != null)
 			chassisTeleopCommand.start();
 		

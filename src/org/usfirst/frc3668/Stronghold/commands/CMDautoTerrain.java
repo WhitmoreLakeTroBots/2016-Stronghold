@@ -27,8 +27,6 @@ public class CMDautoTerrain extends CommandGroup {
 		if (startingPosition == 5) {
 			addSequential(new CMDdriveBySonar(Settings.Auto_InchesToWall, 0, Settings.Auto_DriveSpeed));
 			addSequential(new CMDturn(Settings.Auto_Position5TurnHeading));
-			addSequential(new CMDdriveForward(Settings.Auto_Position2and5InchesToScore,
-					Settings.Auto_Position5TurnHeading, Settings.Auto_DriveSpeed));
 			addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
 		}
 	}
