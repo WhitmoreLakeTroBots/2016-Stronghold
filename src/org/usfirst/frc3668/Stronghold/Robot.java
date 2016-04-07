@@ -34,8 +34,9 @@ public class Robot extends IterativeRobot {
 	Command chassisTeleopCommand;
 	//Command turtleTailTeleop;
 	
-	SendableChooser autoChooser;
+	public static SendableChooser autoChooser;
 	public static SendableChooser autoPositionChooser;
+	public static SendableChooser autoScoreChooser;
 	public static Scaler Scaler;
 	public static OI oi;
 	public static Chassis chassis;
@@ -60,6 +61,7 @@ public class Robot extends IterativeRobot {
 		autoPositionChooser.addObject("Position 3", 3);
 		autoPositionChooser.addObject("Position 4", 4);
 		autoPositionChooser.addObject("Position 5", 5);
+		autoPositionChooser.addObject("Don't try to score", null);
 		SmartDashboard.putData("Autonomous Position Chooser", autoPositionChooser);
 		
 		autoChooser = new SendableChooser();
@@ -71,6 +73,11 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Do nothing with a side of nothingness", Settings.autoCommand.DoNothingness);
 		//autoChooser.addObject("Read ultrasonic", new CMDdriveTillObject());
 		SmartDashboard.putData("Autonomous Mode Chooser",autoChooser);
+		
+		autoScoreChooser = new SendableChooser();
+		autoScoreChooser.addDefault("Score", true);
+		autoScoreChooser.addObject("Don't Score", false);
+		SmartDashboard.putData("Score?", autoScoreChooser);
 		
 		 server = CameraServer.getInstance();
 	     server.setQuality(50);
@@ -111,19 +118,20 @@ public class Robot extends IterativeRobot {
 		
 		Settings.autoCommand selectedAutoCommand = (Settings.autoCommand) autoChooser.getSelected();
 		int selectedPosition = (int) autoPositionChooser.getSelected();
+		boolean Score = (boolean) autoScoreChooser.getSelected();
 		switch (selectedAutoCommand) {
 			case LowBar:
 				autonomousCommand = new CMDautoLowBar();
 				break;
 			case Terrain:
-				autonomousCommand = new CMDautoTerrain(selectedPosition);
+				autonomousCommand = new CMDautoTerrain(selectedPosition, Score);
 				break;
 			case Portcullis:
-				autonomousCommand = new CMDautoPortcullis(selectedPosition);
-break;
+				autonomousCommand = new CMDautoPortcullis(selectedPosition, Score);
+				break;
 			case Rockwall:
-				autonomousCommand = new CMDautoRockwall(selectedPosition);
-		break;		
+				autonomousCommand = new CMDautoRockwall(selectedPosition, Score);
+				break;		
 			case Spy:
 				autonomousCommand = new CMDautoSpy();
 				break;

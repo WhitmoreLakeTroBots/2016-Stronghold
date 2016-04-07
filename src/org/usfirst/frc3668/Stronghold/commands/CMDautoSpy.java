@@ -26,13 +26,13 @@ public class CMDautoSpy extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new CMDdriveForward(Settings.Auto_SpyDistance2Turn,0,Settings.Auto_DriveSpeed));
+    	addSequential(new CMDdrive(Settings.Auto_SpyDistance2Turn,0,Settings.Auto_DriveSpeed));
     	addSequential(new CMDturn(Settings.Auto_SpyTurnHeading));
-    	addSequential(new CMDdriveForward(Settings.Auto_SpyDistance2goal,Settings.Auto_SpyTurnHeading,Settings.Auto_DriveSpeed));
+    	addSequential(new CMDdrive(Settings.Auto_SpyDistance2goal,Settings.Auto_SpyTurnHeading,Settings.Auto_DriveSpeed));
     	addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
     	
-    	addSequential(new CMDdriveForward(-Settings.Auto_SpyDistance2goal,Settings.Auto_SpyTurnHeading,Settings.Auto_DriveSpeed));
+    	addSequential(new CMDdrive(-Settings.Auto_SpyDistance2goal,Settings.Auto_SpyTurnHeading,Settings.Auto_DriveSpeed));
     	addSequential(new CMDturn(0));
-    	addSequential(new CMDdriveForward(-Settings.Auto_SpyDistance2Turn,0,Settings.Auto_DriveSpeed));
+    	addSequential(new CMDdrive(-Settings.Auto_SpyDistance2Turn,0,Settings.Auto_DriveSpeed));
    }
 }

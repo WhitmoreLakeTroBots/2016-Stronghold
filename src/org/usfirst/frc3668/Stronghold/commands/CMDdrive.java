@@ -9,7 +9,7 @@ import org.usfirst.frc3668.Stronghold.RobotCaluator;
 /**
  *
  */
-public class CMDdriveForward extends Command {
+public class CMDdrive extends Command {
 	boolean _isFinished;
 	double _Distance;
 	double _gyroAngle;
@@ -18,7 +18,7 @@ public class CMDdriveForward extends Command {
 	double _fastSpeed;
 	// int _CommandedHeading;
 
-	public CMDdriveForward(double Distance, int CommandedHeading, double Speed) {
+	public CMDdrive(double Distance, int CommandedHeading, double Speed) {
 		_Distance = Distance;
 		_CommandedHeading = CommandedHeading;
 		_fastSpeed = Speed;

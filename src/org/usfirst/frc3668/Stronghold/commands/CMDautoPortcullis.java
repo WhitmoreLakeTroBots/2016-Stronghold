@@ -7,55 +7,30 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class CMDautoPortcullis extends CommandGroup {
-    
-    public  CMDautoPortcullis( int startingPosition) {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
 
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
+	public CMDautoPortcullis(int startingPosition, boolean Score) {
 
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
-    	
-    	CommandGroup StartTT = new CommandGroup();
-    	StartTT.addSequential(new CMDCalibrateTurtleTail());
-    	StartTT.addSequential(new CMDturtleTailDOWN());
-    	
-    	CommandGroup StartUP = new CommandGroup();
-    	StartUP.addParallel(StartTT);
-    	StartUP.addParallel(new CMDdriveForward(Settings.Auto_InchesToPortcullis,0,Settings.Auto_DriveSpeed));
-    	
-    	addSequential(StartUP);
-    	//System.out.println("Sartup commands finished");
-    	//addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
-    	//addSequential(new CMDdriveForward(Settings.Auto_InchesToPortcullis,0,Settings.Auto_DriveSpeed)); //driving up to the Portcullis
-    	addSequential(new CMDdriveForward(Settings.Auto_InchesUnderPortcullis,0,Settings.Auto_DriveSpeed)); //driving under Portcullis
-    	addSequential(new CMDdriveForward(Settings.Auto_InchesAfterPortcullis,0,Settings.Auto_DriveSpeed));
-    	addSequential(new CMDturn(Settings.Auto_PortcullisTurnHeadingEnd));
-    	addSequential(new CMDsetGyroOffset(Settings.GyroInverseOffset));
-    	//System.out.println("Auto is done, turn executed");
-    	if (startingPosition == 2) {
-			addSequential(new CMDdriveBySonar(Settings.Auto_InchesToWall, 0, Settings.Auto_DriveSpeed));
-			addSequential(new CMDturn(Settings.Auto_Position2TurnHeading));
-			addSequential(new CMDdriveForward(Settings.Auto_Position2and5InchesToScore,
-					Settings.Auto_Position2TurnHeading, Settings.Auto_DriveSpeed));
-			addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
-		}
+		CommandGroup StartTT = new CommandGroup();
+		StartTT.addSequential(new CMDCalibrateTurtleTail());
+		StartTT.addSequential(new CMDturtleTailDOWN());
 
-		if (startingPosition == 5) {
-			addSequential(new CMDdriveBySonar(Settings.Auto_InchesToWall, 0, Settings.Auto_DriveSpeed));
-			addSequential(new CMDturn(Settings.Auto_Position5TurnHeading));
-			addSequential(new CMDautoRoller(Settings.Auto_RunRollerMotorSeconds));
-		}
-    	
-    }
+		CommandGroup StartUP = new CommandGroup();
+		StartUP.addParallel(StartTT);
+		StartUP.addParallel(new CMDdrive(Settings.Auto_InchesToPortcullis, 0, Settings.Auto_DriveSpeed));
+
+		addSequential(StartUP);
+		// System.out.println("Sartup commands finished");
+		// addSequential(new CMDdriveDelay(Settings.Auto_delayTimeMillis));
+		// addSequential(new
+		// CMDdriveForward(Settings.Auto_InchesToPortcullis,0,Settings.Auto_DriveSpeed));
+		// //driving up to the Portcullis
+		addSequential(new CMDdrive(Settings.Auto_InchesUnderPortcullis, 0, Settings.Auto_DriveSpeed)); // driving
+																												// under
+																												// Portcullis
+		addSequential(new CMDdrive(Settings.Auto_InchesAfterPortcullis, 0, Settings.Auto_DriveSpeed));
+		addSequential(new CMDturn(Settings.Auto_PortcullisTurnHeadingEnd));
+		addSequential(new CMDsetGyroOffset(Settings.GyroInverseOffset));
+
+		addSequential(new CMDscoreInAuto(startingPosition, Score));
+	}
 }

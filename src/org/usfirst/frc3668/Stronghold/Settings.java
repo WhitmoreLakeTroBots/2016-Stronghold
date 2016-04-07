@@ -107,12 +107,14 @@ public class Settings {
 	public final static double Auto_turnSlowSpeed = .4;
 	public final static long Auto_delayTimeMillis = 375;
 	public final static double Auto_InchesToStraighten = 30;
-	public final static double Auto_InchesToWall = 38;
+	public final static double Auto_InchesToWallPos5 = 38;
+	public final static double Auto_InchesToWallPos2 = 45;
 	public final static int Auto_Position2TurnHeading = Auto_TurnHeadingLowBar;
 	public final static double Auto_Position2and5InchesToScore = 36;
-	public final static int Auto_Position5TurnHeading = 315;
-	public final static double Auto_Inches2BackRockwall = 12;
+	public final static int Auto_RightGoalTurnHeading = 315;
+	public final static double Auto_Inches2BackRockwall = -12;
 	public final static double Auto_Inches2GoForward = 36;
+	public final static int Auto_Position3and4TurnHeading = 90;
 
 	// ***************
 	// Turtle Tail Settings
@@ -150,7 +152,9 @@ public class Settings {
 	// Other Settings <3
 	// ***************
 	public static final double universalSpeedScaleFactor = 2;
-
+	public static final double DefensePaltformLength = 48; //in inches
+	
+	
 	//***************
 	// Sonar Settings
 	//***************
