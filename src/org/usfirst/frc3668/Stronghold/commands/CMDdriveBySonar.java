@@ -7,9 +7,6 @@ import org.usfirst.frc3668.Stronghold.Settings;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class CMDdriveBySonar extends Command {
 
 	double _DistanceFromWall;
@@ -23,8 +20,6 @@ public class CMDdriveBySonar extends Command {
 	boolean _inHighGear = false;
 	
 	public CMDdriveBySonar(double DistanceFromWall, int CommandedHeading, double Speed) {
-		// Use reqdouble Distance, int CommandedHeading, double Speeduires()
-		// here to declare subsystem dependencies
 		requires(Robot.chassis);
 
 		_DistanceFromWall = DistanceFromWall;
@@ -34,8 +29,6 @@ public class CMDdriveBySonar extends Command {
 	}
 
 	public CMDdriveBySonar(double DistanceFromWall, int CommandedHeading, double Speed, boolean highGear) {
-		// Use reqdouble Distance, int CommandedHeading, double Speeduires()
-		// here to declare subsystem dependencies
 		requires(Robot.chassis);
 
 		_DistanceFromWall = DistanceFromWall;
@@ -76,6 +69,7 @@ public class CMDdriveBySonar extends Command {
 			//If we need to shift back to low then get back into low gear for up coming stop
 			if (_inHighGear && (Math.abs(distanceDelta) < Settings.Auto_HigGearSlowDownDistance)) {
 			  Robot.chassis.Shift(false);
+			  _inHighGear = false;
 			}
 			
 			if (Math.abs(distanceDelta) < Settings.Auto_SlowDownDistance) {

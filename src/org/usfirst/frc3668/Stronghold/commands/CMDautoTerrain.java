@@ -4,9 +4,6 @@ import org.usfirst.frc3668.Stronghold.Settings;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class CMDautoTerrain extends CommandGroup {
 
 	public CMDautoTerrain(int startingPosition, boolean Score) {
