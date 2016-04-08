@@ -115,7 +115,9 @@ public class Settings {
 	public final static double Auto_Inches2BackRockwall = -12;
 	public final static double Auto_Inches2GoForward = 36;
 	public final static int Auto_Position3and4TurnHeading = 90;
-
+    
+	public final static long Auto_HighGearDelay=750;  //millisec how long to stay in low gear before shifting to high gear
+	public final static double Auto_HigGearSlowDownDistance= Auto_SlowDownDistance*3;
 	// ***************
 	// Turtle Tail Settings
 	// ***************
