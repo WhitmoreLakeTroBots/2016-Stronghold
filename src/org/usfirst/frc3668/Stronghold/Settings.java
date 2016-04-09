@@ -54,7 +54,7 @@ public class Settings {
 	// Joystick Settings
 	// *****************
 	public final static int Button_joyReleaseScaler = 10;
-	public final static int Button_joySCALE = 12;
+	public final static int Button_joySCALE = 11;
 	public final static int Button_joySafety = 2;
 	public final static int Button_joyTurbo = 8;
 	public final static int Button_turtleTrigger = 1;
@@ -142,7 +142,7 @@ public class Settings {
 	// ***************
 	public final static int SL_ServoDisenaged = 125;
 	public final static int SL_ServoEngaged = 90;
-	public final static double SL_MotorSpeed = 1;
+	public final static double SL_MotorSpeed = -1;
 
 	// ***************
 	// Other Settings <3

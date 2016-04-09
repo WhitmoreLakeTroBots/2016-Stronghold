@@ -41,7 +41,6 @@ public class Robot extends IterativeRobot {
 		autoPositionChooser.addObject("Position 3", 3);
 		autoPositionChooser.addObject("Position 4", 4);
 		autoPositionChooser.addObject("Position 5", 5);
-		autoPositionChooser.addObject("Don't try to score", null);
 		SmartDashboard.putData("Autonomous Position Chooser", autoPositionChooser);
 		
 		autoChooser = new SendableChooser();
@@ -60,7 +59,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Score?", autoScoreChooser);
 		
 		 server = CameraServer.getInstance();
-	     server.setQuality(50);
+	     server.setQuality(35);
 	     //the camera name (ex "cam0") can be found through the roborio web interface
 	     server.startAutomaticCapture("cam0");
 		

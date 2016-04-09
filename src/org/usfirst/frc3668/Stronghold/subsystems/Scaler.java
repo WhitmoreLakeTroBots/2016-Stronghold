@@ -20,7 +20,7 @@ public class Scaler extends Subsystem {
     }
     
     public void driveScaler (double speed){
-    	if(Math.signum(speed) > 0){
+    	if(Math.signum(speed) < 0){
     	RobotMap.ScalingMotor.set(speed);
     	}
     	else{
