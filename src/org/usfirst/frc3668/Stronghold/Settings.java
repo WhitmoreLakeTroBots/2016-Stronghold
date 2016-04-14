@@ -91,7 +91,7 @@ public class Settings {
 	public final static double Auto_TurnSpeed = 0.6;
 	public final static double Auto_DriveSlowSpeedFloor = .4;
 	public final static double Auto_DriveSlowSpeedFactor = 0.6;
-	public final static double Auto_DriveDeadBand = 5;
+	public final static double Auto_DriveDeadBand = 4;
 	public final static double Auto_SlowDownDistance = 12; // inches
 	public final static double Auto_turnDeadband = 1;
 	public final static double Auto_turnSlowDownBand = 10;
@@ -99,21 +99,22 @@ public class Settings {
 	public final static long Auto_delayTimeMillis = 375;
 	public final static double Auto_InchesToStraighten = 30;
 	public final static double Auto_InchesToWallPos5 = 38;
-	public final static double Auto_InchesToWallPos2 = 45;
+	public final static double Auto_InchesToWallPos2 = 52;
 	public final static int Auto_Position2TurnHeading = Auto_TurnHeadingLowBar;
-	public final static double Auto_Position2and5InchesToScore = 36;
+	public final static double Auto_Position2InchesToScore = 36;
+	public final static double Auto_Position5InchesToScore = 12;
 	public final static int Auto_RightGoalTurnHeading = 315;
 	public final static double Auto_Inches2BackRockwall = -12;
 	public final static double Auto_Inches2GoForward = 36;
 	public final static int Auto_Position3and4TurnHeading = 90;
-	public final static double Auto_InchesStopRockWall = 120;
+	public final static double Auto_InchesStop = 120;
 	public final static double Auto_TerrianWithShiftFastSpeed = 0.75;
 	public final static long Auto_HighGearDelay = 750; // millisec how long to
 														// stay in low gear
 														// before shifting to
 														// high gear
 	public final static double Auto_HigGearSlowDownDistance = Auto_SlowDownDistance * 3;
-	
+	public final static double Auto_Inches2OverRockWall = 95;
 	// ***************
 	// Turtle Tail Settings
 	// ***************
@@ -145,10 +146,10 @@ public class Settings {
 	public final static double SL_MotorSpeed = -1;
 
 	// ***************
-	// Other Settings <3
+	// Other Settings 
 	// ***************
 	public static final double universalSpeedScaleFactor = 2;
-	public static final double DefensePaltformLength = 48; // in inches
+	public static final double DefensePaltformLength = 53; // in inches
 
 	// ***************
 	// Sonar Settings
