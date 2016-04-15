@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CMDreleaseScaler extends Command {
+public class CMDreleaseScalerServo extends Command {
 
-    public CMDreleaseScaler() {
+    public CMDreleaseScalerServo() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
