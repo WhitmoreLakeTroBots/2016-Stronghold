@@ -21,7 +21,7 @@ public class CMDscale extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.joySafety.get()){
+    	if(Robot.oi.joySafetyArt.get()){
     	Robot.Scaler.driveScaler(Settings.SL_MotorSpeed);
     	}
     }

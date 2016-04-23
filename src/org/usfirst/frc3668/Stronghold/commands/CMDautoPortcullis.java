@@ -16,7 +16,7 @@ public class CMDautoPortcullis extends CommandGroup {
 
 		CommandGroup StartUP = new CommandGroup();
 		StartUP.addParallel(StartTT);
-		StartUP.addParallel(new CMDdrive(Settings.Auto_InchesToPortcullis, 0, Settings.Auto_DriveSpeed));
+		StartUP.addParallel(new CMDdrive(Settings.Auto_InchesToPortcullis, 0, Settings.Auto_TerrianFastSpeed));
 
 		addSequential(StartUP);
 		// System.out.println("Sartup commands finished");
@@ -24,10 +24,10 @@ public class CMDautoPortcullis extends CommandGroup {
 		// addSequential(new
 		// CMDdriveForward(Settings.Auto_InchesToPortcullis,0,Settings.Auto_DriveSpeed));
 		// //driving up to the Portcullis
-		addSequential(new CMDdrive(Settings.Auto_InchesUnderPortcullis, 0, Settings.Auto_DriveSpeed)); // driving
+		addSequential(new CMDdrive(Settings.Auto_InchesUnderPortcullis, 0, Settings.Auto_TerrianFastSpeed)); // driving
 																												// under
 																												// Portcullis
-		addSequential(new CMDdrive(Settings.Auto_InchesUnderPortcullis, 0, Settings.Auto_DriveSpeed));
+		addSequential(new CMDdrive(Settings.Auto_InchesUnderPortcullis, 0, Settings.Auto_TerrianFastSpeed));
 		addSequential(new CMDturn(Settings.Auto_PortcullisTurnHeadingEnd));
 		addSequential(new CMDsetGyroOffset(Settings.GyroInverseOffset));
 

@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CMDreleaseScalerServo extends Command {
+public class CMDresetScaler extends Command {
 
-    public CMDreleaseScalerServo() {
+    public CMDresetScaler() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -20,8 +20,10 @@ public class CMDreleaseScalerServo extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.joySafetyArt.get()){
-    	Robot.Scaler.disengageServo();
+    	if(Robot.oi.joySafetyArt.get() /*&& Robot.oi.joySafetyDir.get()*/){
+    	Robot.Scaler.releaseWithMotor();
+    	}else{
+    		Robot.Scaler.killMotor();
     	}
     }
 
@@ -32,11 +34,12 @@ public class CMDreleaseScalerServo extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.Scaler.killMotor();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.Scaler.engageServo();
+    Robot.Scaler.killMotor();
     }
 }

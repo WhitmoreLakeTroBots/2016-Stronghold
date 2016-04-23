@@ -14,7 +14,7 @@ public class CMDautoRockwall extends CommandGroup {
 //						Settings.Auto_TerrianFastSpeed));
 		
 		addSequential(new CMDdrive(Settings.Auto_Inches2BackRockwall, 0, Settings.Auto_TerrianFastSpeed));
-		addSequential(new CMDdriveBySonar(Settings.Auto_InchesStop, 0, Settings.Auto_TerrianFastSpeed));
+		addSequential(new CMDdrive(Settings.Auto_InchesIn2CourtYard, 0, Settings.Auto_TerrianFastSpeed, true));
 		
 //		addSequential(new CMDdrive(Settings.Auto_Inches2BackRockwall, 0, Settings.Auto_TerrianFastSpeed));
 //		addSequential(new CMDdrive(Settings.Auto_Inches2GoForward, 0, Settings.Auto_TerrianFastSpeed));

@@ -89,7 +89,7 @@ public class Robot extends IterativeRobot {
 	
 		Robot.chassis.Shift(false);
 		Robot.TurtleTail.encoderReset();
-		Robot.Scaler.engageServo();
+		//Robot.Scaler.engageServo();
 		
 		Settings.autoCommand selectedAutoCommand = (Settings.autoCommand) autoChooser.getSelected();
 		int selectedPosition = (int) autoPositionChooser.getSelected();
@@ -142,7 +142,7 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		
-		Robot.Scaler.engageServo();
+		//Robot.Scaler.engageServo();
 		Robot.chassis.Shift(false);
 		
 		if (chassisTeleopCommand != null)

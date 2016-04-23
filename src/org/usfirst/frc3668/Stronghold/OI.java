@@ -22,33 +22,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
-
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
-
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
-
 	
     public Joystick joyDrive;
     public JoystickButton InvertFront;
@@ -57,13 +30,16 @@ public class OI {
     public JoystickButton turtleTailUP;
     public JoystickButton turtleTailDOWN;
     public Joystick joyArticulator;
+    public JoystickButton joySafetyDir;
     public JoystickButton joyTurbo;
     public JoystickButton turtleCal;
     public JoystickButton turtleTrigger;
     public JoystickButton AccelReadOut;
-    public JoystickButton joySafety;
+    public JoystickButton joySafetyArt;
     public JoystickButton joyScale;
     public JoystickButton joyRelease;
+    public JoystickButton joyResetScaler;
+    public JoystickButton joyCreepyGear;
     
     public OI() {
 
@@ -89,13 +65,20 @@ public class OI {
         InvertFront = new JoystickButton(joyDrive, Settings.Button_joyInvertFront);
         InvertFront.whenPressed(new CMDinvertDrive());
         
-        joySafety = new JoystickButton(joyArticulator, Settings.Button_joySafety);
+        joyCreepyGear = new JoystickButton(joyDrive, Settings.Button_joyCreepyGear);
+        
+        joySafetyDir = new JoystickButton(joyDrive, Settings.Button_joySafety);
+        joySafetyArt = new JoystickButton(joyArticulator, Settings.Button_joySafety);
         
         joyScale = new JoystickButton(joyArticulator, Settings.Button_joySCALE);
         joyScale.whileHeld(new CMDscale());
 
         joyRelease = new JoystickButton(joyArticulator, Settings.Button_joyReleaseScaler);
-        joyRelease.whileHeld(new CMDreleaseScaler());
+        joyRelease.whenPressed(new CMDrealeaseScalerMotor(Settings.SL_TimeRelaese));
+        
+        joyResetScaler = new JoystickButton (joyArticulator, Settings.Button_tuneScaler);
+        joyResetScaler.whileHeld(new CMDresetScaler());
+       // joyRelease.whenReleased(new CMDrealeaseScalerMotor(Settings.SL_TimeRelaese));
         // SmartDashboard Buttons
         //SmartDashboard.putData("Drive Forward To Outerworks!", new CMDdriveForward(Settings.Auto_InchesFromOuterworks));
        // SmartDashboard.putData("Drive Forward To Tower", new CMDdriveForward(Settings.Auto_InchesToTower));

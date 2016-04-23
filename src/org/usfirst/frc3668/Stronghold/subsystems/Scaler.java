@@ -4,6 +4,7 @@ import org.usfirst.frc3668.Stronghold.Robot;
 import org.usfirst.frc3668.Stronghold.RobotMap;
 import org.usfirst.frc3668.Stronghold.Settings;
 
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -34,6 +35,17 @@ public class Scaler extends Subsystem {
     
     public void disengageServo(){
     	RobotMap.scalerServo.setAngle(Settings.SL_ServoDisenaged);
+    	//RobotMap.scalerServo.set(1); //HS-422
+    }
+    
+    public void releaseWithMotor(){
+    	//System.out.println("Running Motor");
+    	RobotMap.scalerTrigger.set(Relay.Value.kForward);
+    }
+    
+    public void killMotor(){
+    	RobotMap.scalerTrigger.set(Relay.Value.kOff);
+    	System.out.println("WE KILLED IT!");
     }
 }
 

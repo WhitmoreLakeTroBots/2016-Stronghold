@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.Talon;
 
 public class RobotMap {
 	public static Accelerometer Accel; 
+	public static Relay scalerTrigger;
     public static CANTalon chassisMotorChassisRight1;
     public static CANTalon chassisMotorChassisRight2;
     public static CANTalon chassisMotorChassisLeft1;
@@ -107,5 +108,7 @@ public class RobotMap {
         Accel = new BuiltInAccelerometer(Accelerometer.Range.k4G);
         
         Sonar = new AnalogPotentiometer(Settings.Analog_SonarPort, Settings.Sonar_Scale);
+        
+        scalerTrigger = new Relay(Settings.RelayPort_ScalerRelease);
     }
 }

@@ -33,7 +33,7 @@ public class CMDjoystickDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.chassis.drive(Robot.oi.getJoyDrive());
-    	System.out.println("Sonar Output: "+RobotMap.Sonar.get());
+    	//System.out.println("Sonar Output: "+RobotMap.Sonar.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()

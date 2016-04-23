@@ -32,6 +32,12 @@ public class Settings {
 	public final static double Heading_Kp = 25;
 	public final static double GyroInverseOffset = 180;
 
+	//*********************
+	//Relay Settings
+	//*********************
+	
+	public final static int RelayPort_ScalerRelease = 0;
+	
 	// ********************
 	// Drive Train Settings
 	// ********************
@@ -53,7 +59,9 @@ public class Settings {
 	// *****************
 	// Joystick Settings
 	// *****************
+	public final static int Button_joyCreepyGear = 1;
 	public final static int Button_joyReleaseScaler = 10;
+	public final static int Button_tuneScaler = 8;
 	public final static int Button_joySCALE = 11;
 	public final static int Button_joySafety = 2;
 	public final static int Button_joyTurbo = 8;
@@ -72,7 +80,7 @@ public class Settings {
 	public final static double Auto_SpyDistance2Turn = 87;
 	public final static double Auto_SpyDistance2goal = 65;
 	public final static int Auto_SpyTurnHeading = 320;
-	public final static double Auto_InchesFromOuterworksLowBar = 132;
+	public final static double Auto_InchesFromOuterworksLowBar = 146;
 	public final static double Auto_LowbarDriveForward2 = 72;
 	public final static int Auto_LowbarAngleHeading1 = 15;
 	public final static double Auto_InchesToDefenseTerrian = 70;
@@ -99,7 +107,7 @@ public class Settings {
 	public final static long Auto_delayTimeMillis = 375;
 	public final static double Auto_InchesToStraighten = 30;
 	public final static double Auto_InchesToWallPos5 = 38;
-	public final static double Auto_InchesToWallPos2 = 52;
+	public final static double Auto_InchesToWallPos2 = 46;
 	public final static int Auto_Position2TurnHeading = Auto_TurnHeadingLowBar;
 	public final static double Auto_Position2InchesToScore = 36;
 	public final static double Auto_Position5InchesToScore = 12;
@@ -115,6 +123,8 @@ public class Settings {
 														// high gear
 	public final static double Auto_HigGearSlowDownDistance = Auto_SlowDownDistance * 3;
 	public final static double Auto_Inches2OverRockWall = 95;
+	public final static double Auto_InchesIn2CourtYard = 96;
+	
 	// ***************
 	// Turtle Tail Settings
 	// ***************
@@ -137,18 +147,20 @@ public class Settings {
 	public final static double BR_reverseSpeed = -1;
 	public final static double BR_forwardSpeed = 0.6;
 	public final static long BR_ejectMilliseconds = 2000;
-
+	
+	
 	// ***************
 	// Scaler Settings
 	// ***************
-	public final static int SL_ServoDisenaged = 125;
-	public final static int SL_ServoEngaged = 90;
+	public final static int SL_ServoDisenaged = 135;
+	public final static int SL_ServoEngaged = 45;
 	public final static double SL_MotorSpeed = -1;
-
+	public final static long SL_TimeRelaese = 285;
+	
 	// ***************
 	// Other Settings 
 	// ***************
-	public static final double universalSpeedScaleFactor = 2;
+	public static final double universalSpeedScaleFactor = 0.55;
 	public static final double DefensePaltformLength = 53; // in inches
 
 	// ***************

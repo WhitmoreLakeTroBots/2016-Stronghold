@@ -109,14 +109,18 @@ public class Chassis extends Subsystem {
 	}
 
 	public void drive(Joystick joyDrive) {
-		double invertedJoyX = joyDrive.getX();
-		double invertedJoyY = -joyDrive.getY();
+		double joyX = joyDrive.getX();
+		double JoyY = joyDrive.getY();
 		//System.out.println("Inverted X axis: " + invertedJoyX + "\t Inverted Y axis: " + invertedJoyY + "\t Normal X axis: " + joyDrive.getX() + "\t Normal Y axis: " + joyDrive.getY());
-
+		if(Robot.oi.joyCreepyGear.get()){
+			joyX = joyX * Settings.universalSpeedScaleFactor;	
+			JoyY = JoyY * Settings.universalSpeedScaleFactor;
+		}
 		if (Robot.isDriveReversed) {
-			robotDrive41.arcadeDrive(invertedJoyY,invertedJoyX );
+			JoyY = -JoyY;
+			robotDrive41.arcadeDrive(JoyY,joyX );
 		} else {
-			robotDrive41.arcadeDrive(joyDrive);
+			robotDrive41.arcadeDrive(JoyY, joyX);
 
 		}
 		// System.out.println("Current heading: "+getCurrentHeading());
